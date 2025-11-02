@@ -1,0 +1,1201 @@
+{
+  "albums": [
+    {
+      "id": "lang-nghe-nuoc-mat-single",
+      "name": "Lắng Nghe Nước Mắt(Single)",
+      "image": "https://thantrieu.com/resources/arts/1074241673.webp",
+      "song_ids": [
+        "1074344478",
+        "1074412087",
+        "1074700719",
+        "1075251906"
+      ],
+      "artists": [
+        "Mr. Siro"
+      ],
+      "song_count": 4
+    },
+    {
+      "id": "ieu-chua-tung-noi",
+      "name": "Điều Chưa Từng Nói",
+      "image": "https://thantrieu.com/resources/arts/1075144767.webp",
+      "song_ids": [
+        "1075144767",
+        "1075144768",
+        "1075144769",
+        "1078245020"
+      ],
+      "artists": [
+        "Bích Phương"
+      ],
+      "song_count": 4
+    },
+    {
+      "id": "con-no-me",
+      "name": "Con Nợ Mẹ",
+      "image": "https://thantrieu.com/resources/arts/1075170082.webp",
+      "song_ids": [
+        "1075170082",
+        "1075170083",
+        "1075170084"
+      ],
+      "artists": [
+        "Trịnh Đình Quang"
+      ],
+      "song_count": 3
+    },
+    {
+      "id": "tinh-yeu-chap-va",
+      "name": "Tình Yêu Chắp Vá",
+      "image": "https://thantrieu.com/resources/arts/1075415770.webp",
+      "song_ids": [
+        "1075415770",
+        "1075435155",
+        "1075475120"
+      ],
+      "artists": [
+        "Mr. Siro"
+      ],
+      "song_count": 3
+    },
+    {
+      "id": "wild-angel-s-collection",
+      "name": "Wild Angel's Collection",
+      "image": "https://thantrieu.com/resources/arts/1073419268.webp",
+      "song_ids": [
+        "1073419268",
+        "1073969708",
+        "1075065818"
+      ],
+      "artists": [
+        "Mr. Siro",
+        "Richard Mar",
+        "Shayne Ward"
+      ],
+      "song_count": 3
+    },
+    {
+      "id": "25",
+      "name": "25",
+      "image": "https://thantrieu.com/resources/arts/1078245047.webp",
+      "song_ids": [
+        "1078245047",
+        "1078245048"
+      ],
+      "artists": [
+        "Hoàng Dũng"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "em-yeu-anh",
+      "name": "Em Yêu Anh",
+      "image": "https://thantrieu.com/resources/arts/1074183664.webp",
+      "song_ids": [
+        "1074183664",
+        "1074592745"
+      ],
+      "artists": [
+        "Miu Lê"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "hoi-tham-nhau",
+      "name": "Hỏi Thăm Nhau",
+      "image": "https://thantrieu.com/resources/arts/1075525434.png",
+      "song_ids": [
+        "1075525434",
+        "1075787606"
+      ],
+      "artists": [
+        "Lê Bảo Bình"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "nguoi-ay",
+      "name": "Người Ấy",
+      "image": "https://thantrieu.com/resources/arts/1078245024.webp",
+      "song_ids": [
+        "1078245024",
+        "1078245025"
+      ],
+      "artists": [
+        "Trịnh Thăng Bình"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "nho-gia-inh",
+      "name": "Nhớ Gia Đình",
+      "image": "https://thantrieu.com/resources/arts/1075398749.webp",
+      "song_ids": [
+        "1075398749",
+        "1075429010"
+      ],
+      "artists": [
+        "Lê Bảo Bình"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "remix-unknown",
+      "name": "Remix-Unknown",
+      "image": "https://thantrieu.com/resources/arts/1078153801.webp",
+      "song_ids": [
+        "1078153801",
+        "1078168375"
+      ],
+      "artists": [
+        "Lê Bảo Bình"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "22",
+      "name": "22",
+      "image": "https://thantrieu.com/resources/arts/1078245011.webp",
+      "song_ids": [
+        "1078245011"
+      ],
+      "artists": [
+        "MONO"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "99",
+      "name": "99%",
+      "image": "https://thantrieu.com/resources/arts/1078245031.webp",
+      "song_ids": [
+        "1078245031"
+      ],
+      "artists": [
+        "MCK",
+        "Trung Trần"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ai-chung-tinh-uoc-mai-single",
+      "name": "Ai Chung Tình Được Mãi(Single)",
+      "image": "https://thantrieu.com/resources/arts/1130295705.webp",
+      "song_ids": [
+        "1130295705"
+      ],
+      "artists": [
+        "Đinh Tùng Huy"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "anh-thanh-nien-single",
+      "name": "Anh Thanh niên(Single)",
+      "image": "https://thantrieu.com/resources/arts/1121430002.webp",
+      "song_ids": [
+        "1121430002"
+      ],
+      "artists": [
+        "HuyR"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "bao-nam-mot-cuoc-tinh-ep",
+      "name": "Bao Năm Một Cuộc Tình(EP)",
+      "image": "https://thantrieu.com/resources/arts/1078245015.webp",
+      "song_ids": [
+        "1078245015"
+      ],
+      "artists": [
+        "Hà Linh",
+        "Madihu"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "bigcityboi-single",
+      "name": "Bigcityboi(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245038.webp",
+      "song_ids": [
+        "1078245038"
+      ],
+      "artists": [
+        "Binz",
+        "Touliver"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "cho-minh-em-single",
+      "name": "Cho Mình Em(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245036.webp",
+      "song_ids": [
+        "1078245036"
+      ],
+      "artists": [
+        "Binz",
+        "Đen"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "chuyen-tinh-khong-di-vang",
+      "name": "Chuyện Tình Không Dĩ Vãng",
+      "image": "https://thantrieu.com/resources/arts/1074276774.webp",
+      "song_ids": [
+        "1074276774"
+      ],
+      "artists": [
+        "Lệ Quyên",
+        "Quang Lê"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "chuyen-oi-ta-single",
+      "name": "Chuyện Đôi Ta(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245032.webp",
+      "song_ids": [
+        "1078245032"
+      ],
+      "artists": [
+        "Emcee L",
+        "Muộii"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "cham-khe-tim-anh-mot-chut-thoi-single",
+      "name": "Chạm Khẽ Tim Anh Một Chút Thôi(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245023.webp",
+      "song_ids": [
+        "1078245023"
+      ],
+      "artists": [
+        "Noo Phước Thịnh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "chay-ngay-i-single",
+      "name": "Chạy Ngay Đi(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245051.webp",
+      "song_ids": [
+        "1078245051"
+      ],
+      "artists": [
+        "Sơn Tùng M-TP"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "chay-ve-khoc-voi-anh-single",
+      "name": "Chạy Về Khóc Với Anh(Single)",
+      "image": "https://thantrieu.com/resources/arts/1121429554.webp",
+      "song_ids": [
+        "1121429554"
+      ],
+      "artists": [
+        "ERIK"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "chac-anh-ang-single",
+      "name": "Chắc Anh Đang(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245041.webp",
+      "song_ids": [
+        "1078245041"
+      ],
+      "artists": [
+        "Tiên Tiên",
+        "Trang"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "chang-the-tim-uoc-em-2",
+      "name": "Chẳng Thể Tìm Được Em 2",
+      "image": "https://thantrieu.com/resources/arts/1130295694.webp",
+      "song_ids": [
+        "1130295694"
+      ],
+      "artists": [
+        "Freak D",
+        "P",
+        "Phúc"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "chi-con-ta-va-ta-giua-troi-single",
+      "name": "Chỉ Còn Ta Và Ta Giữa Trời(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245054.webp",
+      "song_ids": [
+        "1078245054"
+      ],
+      "artists": [
+        "D.Blue",
+        "Killic"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ciray-remix-cover",
+      "name": "Ciray Remix-Cover",
+      "image": "https://thantrieu.com/resources/arts/1130295697.webp",
+      "song_ids": [
+        "1130295697"
+      ],
+      "artists": [
+        "Đình Dũng"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "collection-songs",
+      "name": "Collection Songs",
+      "image": "https://thantrieu.com/resources/arts/1073850016.webp",
+      "song_ids": [
+        "1073850016"
+      ],
+      "artists": [
+        "Ricky J"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "co-anh-o-ay-roi-single",
+      "name": "Có Anh Ở Đây Rồi(Single)",
+      "image": "https://thantrieu.com/resources/arts/1074952862.webp",
+      "song_ids": [
+        "1074952862"
+      ],
+      "artists": [
+        "Anh Quân Idol"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "dark-blood",
+      "name": "DARK BLOOD",
+      "image": "https://thantrieu.com/resources/arts/1078245028.webp",
+      "song_ids": [
+        "1078245028"
+      ],
+      "artists": [
+        "ENHYPEN"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "digital-single-music-video",
+      "name": "Digital Single & Music Video",
+      "image": "https://thantrieu.com/resources/arts/1075365502.webp",
+      "song_ids": [
+        "1075365502"
+      ],
+      "artists": [
+        "Trung Quân Idol"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "em-nen-dung-lai-single",
+      "name": "Em Nên Dừng Lại(Single)",
+      "image": "https://thantrieu.com/resources/arts/1130295701.webp",
+      "song_ids": [
+        "1130295701"
+      ],
+      "artists": [
+        "Khang Việt"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "em-yeu-mua-la-rung",
+      "name": "Em Yêu Mùa Lá Rụng",
+      "image": "https://thantrieu.com/resources/arts/1078245066.webp",
+      "song_ids": [
+        "1078245066"
+      ],
+      "artists": [
+        "Dương Hoàng Yến",
+        "Lê",
+        "uân Bắc"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "giao-lo-thoi-gian-tap-8",
+      "name": "Giao Lộ Thời Gian Tập 8",
+      "image": "https://thantrieu.com/resources/arts/1078245063.webp",
+      "song_ids": [
+        "1078245063"
+      ],
+      "artists": [
+        "Hà Nhi"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "gia-cung-nhau-la-uoc",
+      "name": "Già Cùng Nhau Là Được",
+      "image": "https://thantrieu.com/resources/arts/1078245055.webp",
+      "song_ids": [
+        "1078245055"
+      ],
+      "artists": [
+        "Già Cùng Nhau Là Được(Single)"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "gai-oc-than-single",
+      "name": "Gái Độc Thân(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245017.webp",
+      "song_ids": [
+        "1078245017"
+      ],
+      "artists": [
+        "Tlinh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "gui-nguoi-yeu-cu-love-songs-collection-3",
+      "name": "Gửi Người Yêu Cũ - Love Songs Collection 3",
+      "image": "https://thantrieu.com/resources/arts/1078245060.webp",
+      "song_ids": [
+        "1078245060"
+      ],
+      "artists": [
+        "Hồ Ngọc Hà"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "gui-vao-ky-niem",
+      "name": "Gửi Vào Kỷ Niệm",
+      "image": "https://thantrieu.com/resources/arts/1074959659.webp",
+      "song_ids": [
+        "1074959659"
+      ],
+      "artists": [
+        "Dương Hồng Loan"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "h2t-tet-lang-nghe-mua-xuan-ve",
+      "name": "H2T Tết - Lắng Nghe Mùa Xuân Về",
+      "image": "https://thantrieu.com/resources/arts/1078245029.webp",
+      "song_ids": [
+        "1078245029"
+      ],
+      "artists": [
+        "Hồ Ngọc Hà"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "hoa-hai-uong-single",
+      "name": "Hoa Hải Đường(Single)",
+      "image": "https://thantrieu.com/resources/arts/1121430004.webp",
+      "song_ids": [
+        "1121430004"
+      ],
+      "artists": [
+        "Jack- J97"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "hollywood-s-bleeding",
+      "name": "Hollywood's Bleeding",
+      "image": "https://thantrieu.com/resources/arts/1078245040.webp",
+      "song_ids": [
+        "1078245040"
+      ],
+      "artists": [
+        "Ozzy Osbourne",
+        "Post Malone",
+        "Travis Scott"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "hoang",
+      "name": "Hoàng",
+      "image": "https://thantrieu.com/resources/arts/1078245034.webp",
+      "song_ids": [
+        "1078245034"
+      ],
+      "artists": [
+        "Hoàng Thùy Linh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "huong",
+      "name": "Hương",
+      "image": "https://thantrieu.com/resources/arts/1078245061.webp",
+      "song_ids": [
+        "1078245061"
+      ],
+      "artists": [
+        "Văn Mai Hương"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "huong-tram",
+      "name": "Hương Tràm",
+      "image": "https://thantrieu.com/resources/arts/1075363470.webp",
+      "song_ids": [
+        "1075363470"
+      ],
+      "artists": [
+        "Hương Tràm"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "het-thuong-can-nho-single",
+      "name": "Hết Thương Cạn Nhớ(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245049.webp",
+      "song_ids": [
+        "1078245049"
+      ],
+      "artists": [
+        "Đức Phúc"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "karik-x-only-c",
+      "name": "KARIK X ONLY C",
+      "image": "https://thantrieu.com/resources/arts/1130295695.webp",
+      "song_ids": [
+        "1130295695"
+      ],
+      "artists": [
+        "Karik",
+        "Only C"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "khanh-s-live-vol-2-ep",
+      "name": "Khanh's Live Vol 2(EP)",
+      "image": "https://thantrieu.com/resources/arts/1078245042.webp",
+      "song_ids": [
+        "1078245042"
+      ],
+      "artists": [
+        "Bạch Công Khanh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "khong-biet-nen-vui-hay-buon-ep",
+      "name": "Không Biết Nên Vui hay Buồn(EP)",
+      "image": "https://thantrieu.com/resources/arts/1078245013.webp",
+      "song_ids": [
+        "1078245013"
+      ],
+      "artists": [
+        "Bảo Anh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "link",
+      "name": "LINK",
+      "image": "https://thantrieu.com/resources/arts/1078245035.webp",
+      "song_ids": [
+        "1078245035"
+      ],
+      "artists": [
+        "Hoàng Thùy Linh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "lam-ieu-minh-yeu",
+      "name": "Làm Điều Mình Yêu",
+      "image": "https://thantrieu.com/resources/arts/1078245069.webp",
+      "song_ids": [
+        "1078245069"
+      ],
+      "artists": [
+        "Thái Trinh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "le-bao-binh-phan-manh-quynh",
+      "name": "Lê Bảo Bình - Phan Mạnh Quỳnh",
+      "image": "https://thantrieu.com/resources/arts/1074748272.webp",
+      "song_ids": [
+        "1074748272"
+      ],
+      "artists": [
+        "Lê Bảo Bình",
+        "Phan Mạnh Quỳnh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "making-money",
+      "name": "Making Money",
+      "image": "https://thantrieu.com/resources/arts/1078245043.webp",
+      "song_ids": [
+        "1078245043"
+      ],
+      "artists": [
+        "Trúc Nhân"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "mien-la-cung-nhau-single",
+      "name": "Miễn Là Cùng Nhau(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245014.webp",
+      "song_ids": [
+        "1078245014"
+      ],
+      "artists": [
+        "Minh Huy",
+        "Sean"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "mua-ong-chua-bao-gio-toi-single",
+      "name": "Mùa Đông Chưa Bao Giờ Tới(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245016.webp",
+      "song_ids": [
+        "1078245016"
+      ],
+      "artists": [
+        "Uyên Linh",
+        "Vũ"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "mua-thang-sau-single",
+      "name": "Mưa Tháng Sáu(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245008.webp",
+      "song_ids": [
+        "1078245008"
+      ],
+      "artists": [
+        "GREY D",
+        "Trung Quân",
+        "Văn Mai Hương"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "mat-troi-cua-em-single",
+      "name": "Mặt Trời Của Em(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245050.webp",
+      "song_ids": [
+        "1078245050"
+      ],
+      "artists": [
+        "JustaTee",
+        "Phương Ly"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ngay-troi-ve-phia-cu",
+      "name": "Ngày Trôi Về Phía Cũ",
+      "image": "https://thantrieu.com/resources/arts/1078245067.webp",
+      "song_ids": [
+        "1078245067"
+      ],
+      "artists": [
+        "Bùi Anh Tuấn",
+        "Dương Trường Giang"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "nguoi-la-thoang-qua-single",
+      "name": "Người Lạ Thoáng Qua(Single)",
+      "image": "https://thantrieu.com/resources/arts/1130295702.webp",
+      "song_ids": [
+        "1130295702"
+      ],
+      "artists": [
+        "Đinh Tùng Huy"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ngo-loi-single",
+      "name": "Ngỏ Lời(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245027.webp",
+      "song_ids": [
+        "1078245027"
+      ],
+      "artists": [
+        "Suni Hạ Linh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "nh4t",
+      "name": "NH4T",
+      "image": "https://thantrieu.com/resources/arts/1130295700.webp",
+      "song_ids": [
+        "1130295700"
+      ],
+      "artists": [
+        "Út Nhị Mino"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "nhung-bai-hat-hay-ve-hoc-tro",
+      "name": "Những Bài Hát Hay Về Học Trò",
+      "image": "https://thantrieu.com/resources/arts/1078245046.webp",
+      "song_ids": [
+        "1078245046"
+      ],
+      "artists": [
+        "Lynk Lee",
+        "Phúc Bằng"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "no-ne",
+      "name": "No Nê",
+      "image": "https://thantrieu.com/resources/arts/1078245059.webp",
+      "song_ids": [
+        "1078245059"
+      ],
+      "artists": [
+        "Suboi"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "phao-hong-single",
+      "name": "Pháo Hồng(Single)",
+      "image": "https://thantrieu.com/resources/arts/1130295704.webp",
+      "song_ids": [
+        "1130295704"
+      ],
+      "artists": [
+        "Đạt Long Vinh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "phia-sau-mot-co-gai-single",
+      "name": "Phía Sau Một Cô Gái(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245018.webp",
+      "song_ids": [
+        "1078245018"
+      ],
+      "artists": [
+        "SOOBIN"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "phai-chi-luc-truoc-anh-sai",
+      "name": "Phải Chi Lúc Trước Anh Sai",
+      "image": "https://thantrieu.com/resources/arts/1074241673.webp",
+      "song_ids": [
+        "1074241673"
+      ],
+      "artists": [
+        "Mr Siro"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "phu-tinh-single",
+      "name": "Phụ Tình(Single)",
+      "image": "https://thantrieu.com/resources/arts/1075399196.webp",
+      "song_ids": [
+        "1075399196"
+      ],
+      "artists": [
+        "Trịnh Đình Quang"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "rapitalove-ep",
+      "name": "Rapitalove(EP)",
+      "image": "https://thantrieu.com/resources/arts/1078245037.webp",
+      "song_ids": [
+        "1078245037"
+      ],
+      "artists": [
+        "MCK",
+        "Rapital Phong Khin"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "remix-ai-meo",
+      "name": "Remix-Đại Mèo",
+      "image": "https://thantrieu.com/resources/arts/1130295698.webp",
+      "song_ids": [
+        "1130295698"
+      ],
+      "artists": [
+        "93NEW-G",
+        "Nal",
+        "TVk"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "sa-mac-tinh-yeu",
+      "name": "Sa Mạc Tình Yêu",
+      "image": "https://thantrieu.com/resources/arts/1078245064.webp",
+      "song_ids": [
+        "1078245064"
+      ],
+      "artists": [
+        "Kiwi Ngô Mai Trang",
+        "Quang Hà"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ta-la-cho-nhau",
+      "name": "Ta Là Cho Nhau",
+      "image": "https://thantrieu.com/resources/arts/1078245062.webp",
+      "song_ids": [
+        "1078245062"
+      ],
+      "artists": [
+        "Miu Lê"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ten-on-ten",
+      "name": "Ten On Ten",
+      "image": "https://thantrieu.com/resources/arts/1078245057.webp",
+      "song_ids": [
+        "1078245057"
+      ],
+      "artists": [
+        "Đông Nhi"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "the-best-of-phi-nhung-ru-lai-cau-ho",
+      "name": "The Best of Phi Nhung - Ru Lại Câu Hò",
+      "image": "https://thantrieu.com/resources/arts/1075536512.webp",
+      "song_ids": [
+        "1075536512"
+      ],
+      "artists": [
+        "Phi Nhung"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "the-first-step",
+      "name": "The First Step",
+      "image": "https://thantrieu.com/resources/arts/1078245019.webp",
+      "song_ids": [
+        "1078245019"
+      ],
+      "artists": [
+        "Bảo Trâm"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "the-singer",
+      "name": "The Singer",
+      "image": "https://thantrieu.com/resources/arts/1078245058.webp",
+      "song_ids": [
+        "1078245058"
+      ],
+      "artists": [
+        "Đông Nhi"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "theo-dau-chan-em-single",
+      "name": "Theo Dấu Chân Em(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245065.webp",
+      "song_ids": [
+        "1078245065"
+      ],
+      "artists": [
+        "Danny Nguyễn",
+        "Sara Luu"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "thien-ly-oi-single",
+      "name": "Thiên Lý Ơi(Single)",
+      "image": "https://thantrieu.com/resources/arts/1121430003.webp",
+      "song_ids": [
+        "1121430003"
+      ],
+      "artists": [
+        "Jack- J97"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "thang-ien-single",
+      "name": "Thằng Điên(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245010.webp",
+      "song_ids": [
+        "1078245010"
+      ],
+      "artists": [
+        "JustaTee",
+        "Phương Ly"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "thuy-trieu-single",
+      "name": "Thủy Triều(Single)",
+      "image": "https://thantrieu.com/resources/arts/1121430001.webp",
+      "song_ids": [
+        "1121430001"
+      ],
+      "artists": [
+        "Quang Hùng MasterD"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "tncd-302-vo-toi",
+      "name": "TNCD 302 Vợ Tôi",
+      "image": "https://thantrieu.com/resources/arts/1073969323.webp",
+      "song_ids": [
+        "1073969323"
+      ],
+      "artists": [
+        "Mạnh Quỳnh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "tuyet-inh-song-ca",
+      "name": "Tuyệt Đỉnh Song Ca",
+      "image": "https://thantrieu.com/resources/arts/1078009835.webp",
+      "song_ids": [
+        "1078009835"
+      ],
+      "artists": [
+        "Khánh Bình",
+        "Ngọc Diệu"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "tat-nuoc-au-inh",
+      "name": "Tát Nước Đầu Đình",
+      "image": "https://thantrieu.com/resources/arts/1078245045.webp",
+      "song_ids": [
+        "1078245045"
+      ],
+      "artists": [
+        "Binz",
+        "Lynk Lee"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "tinh-lua-duyen-trang",
+      "name": "Tình Lúa Duyên Trăng",
+      "image": "https://thantrieu.com/resources/arts/1078245006.webp",
+      "song_ids": [
+        "1078245006"
+      ],
+      "artists": [
+        "Dương Hồng Loan",
+        "Quách Thành Danh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "tam-biet-anh",
+      "name": "Tạm Biệt Anh",
+      "image": "https://thantrieu.com/resources/arts/1078245068.webp",
+      "song_ids": [
+        "1078245068"
+      ],
+      "artists": [
+        "Trang Pháp"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "unknow",
+      "name": "Unknow",
+      "image": "https://thantrieu.com/resources/arts/1078245039.webp",
+      "song_ids": [
+        "1078245039"
+      ],
+      "artists": [
+        "HwangMike",
+        "Trung Trần"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "vaicaunoicokhiennguoithaydoi-single",
+      "name": "vaicaunoicokhiennguoithaydoi(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245033.webp",
+      "song_ids": [
+        "1078245033"
+      ],
+      "artists": [
+        "GREY D",
+        "Tlinh"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "viet-kieu-single",
+      "name": "Việt Kiều(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245007.webp",
+      "song_ids": [
+        "1078245007"
+      ],
+      "artists": [
+        "Itsnk",
+        "Wren Evans"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "xin-ung-lang-im-single",
+      "name": "Xin Đừng Lặng Im(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245070.webp",
+      "song_ids": [
+        "1078245070"
+      ],
+      "artists": [
+        "SOOBIN"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "xin-ung-nhac-may-single",
+      "name": "Xin Đừng Nhấc Máy(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245053.webp",
+      "song_ids": [
+        "1078245053"
+      ],
+      "artists": [
+        "B Ray",
+        "Han Sara"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "yeu-anh-i-me-anh-ban-banh-mi-ep",
+      "name": "Yêu Anh Đi Mẹ Anh Bán Bánh Mì(EP)",
+      "image": "https://thantrieu.com/resources/arts/1078245030.webp",
+      "song_ids": [
+        "1078245030"
+      ],
+      "artists": [
+        "Phúc Du"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "yeu-em-rat-nhieu-single",
+      "name": "Yêu Em Rất Nhiều(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245012.webp",
+      "song_ids": [
+        "1078245012"
+      ],
+      "artists": [
+        "Hoàng Tôn"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "an-tinh-sang-trang-single",
+      "name": "Ân Tình Sang Trang(Single)",
+      "image": "https://thantrieu.com/resources/arts/1130295703.webp",
+      "song_ids": [
+        "1130295703"
+      ],
+      "artists": [
+        "Châu Khải Phong"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ua-em-ve-nha-single",
+      "name": "Đưa Em Về Nhà(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245009.webp",
+      "song_ids": [
+        "1078245009"
+      ],
+      "artists": [
+        "Chillies",
+        "GREY D"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ong-dao-show",
+      "name": "Đồng Dao Show",
+      "image": "https://thantrieu.com/resources/arts/1130295696.webp",
+      "song_ids": [
+        "1130295696"
+      ],
+      "artists": [
+        "Hoài Lâm"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ung-ai-nhac-ve-anh-ay-single",
+      "name": "Đừng Ai Nhắc Về Anh Ấy(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245022.webp",
+      "song_ids": [
+        "1078245023"
+      ],
+      "artists": [
+        "Trà My Idol"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ung-quen-ten-anh-single",
+      "name": "Đừng Quên Tên Anh(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245021.webp",
+      "song_ids": [
+        "1078245021"
+      ],
+      "artists": [
+        "Hoa Vinh"
+      ],
+      "song_count": 1
+    }
+  ]
+}

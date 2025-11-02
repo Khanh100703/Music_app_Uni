@@ -1,0 +1,1092 @@
+{
+  "artists": [
+    {
+      "id": "le-bao-binh",
+      "name": "Lê Bảo Bình",
+      "image": "https://thantrieu.com/resources/arts/1074748272.webp",
+      "song_ids": [
+        "1074748272",
+        "1075096420",
+        "1075398749",
+        "1075429010",
+        "1075525434",
+        "1075787606",
+        "1076249352",
+        "1076431972",
+        "1078153801",
+        "1078153803",
+        "1078168375"
+      ],
+      "song_count": 11
+    },
+    {
+      "id": "mr-siro",
+      "name": "Mr Siro",
+      "image": "https://thantrieu.com/resources/arts/1074241673.webp",
+      "song_ids": [
+        "1074241673",
+        "1074344478",
+        "1074412087",
+        "1074700719",
+        "1074793765",
+        "1074869263",
+        "1075065818",
+        "1075251906",
+        "1075415770",
+        "1075435155",
+        "1075475120"
+      ],
+      "song_count": 11
+    },
+    {
+      "id": "trinh-inh-quang",
+      "name": "Trịnh Đình Quang",
+      "image": "https://thantrieu.com/resources/arts/1075170082.webp",
+      "song_ids": [
+        "1075170082",
+        "1075170083",
+        "1075170084",
+        "1075399196",
+        "1075423818"
+      ],
+      "song_count": 5
+    },
+    {
+      "id": "bich-phuong",
+      "name": "Bích Phương",
+      "image": "https://thantrieu.com/resources/arts/1075144767.webp",
+      "song_ids": [
+        "1075144767",
+        "1075144768",
+        "1075144769",
+        "1078245020"
+      ],
+      "song_count": 4
+    },
+    {
+      "id": "binz",
+      "name": "Binz",
+      "image": "https://thantrieu.com/resources/arts/1078245036.webp",
+      "song_ids": [
+        "1078245036",
+        "1078245038",
+        "1078245045"
+      ],
+      "song_count": 3
+    },
+    {
+      "id": "grey-d",
+      "name": "GREY D",
+      "image": "https://thantrieu.com/resources/arts/1078245008.webp",
+      "song_ids": [
+        "1078245008",
+        "1078245009",
+        "1078245033"
+      ],
+      "song_count": 3
+    },
+    {
+      "id": "miu-le",
+      "name": "Miu Lê",
+      "image": "https://thantrieu.com/resources/arts/1074183664.webp",
+      "song_ids": [
+        "1074183664",
+        "1074592745",
+        "1078245062"
+      ],
+      "song_count": 3
+    },
+    {
+      "id": "duong-hong-loan",
+      "name": "Dương Hồng Loan",
+      "image": "https://thantrieu.com/resources/arts/1074959659.webp",
+      "song_ids": [
+        "1074959659",
+        "1078245006"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "hoang-dung",
+      "name": "Hoàng Dũng",
+      "image": "https://thantrieu.com/resources/arts/1078245047.webp",
+      "song_ids": [
+        "1078245047",
+        "1078245048"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "hoang-thuy-linh",
+      "name": "Hoàng Thùy Linh",
+      "image": "https://thantrieu.com/resources/arts/1078245034.webp",
+      "song_ids": [
+        "1078245034",
+        "1078245035"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "ho-ngoc-ha",
+      "name": "Hồ Ngọc Hà",
+      "image": "https://thantrieu.com/resources/arts/1078245029.webp",
+      "song_ids": [
+        "1078245029",
+        "1078245060"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "jack-j97",
+      "name": "Jack- J97",
+      "image": "https://thantrieu.com/resources/arts/1121430003.webp",
+      "song_ids": [
+        "1121430003",
+        "1121430004"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "justatee",
+      "name": "JustaTee",
+      "image": "https://thantrieu.com/resources/arts/1078245010.webp",
+      "song_ids": [
+        "1078245010",
+        "1078245050"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "karik",
+      "name": "Karik",
+      "image": "https://thantrieu.com/resources/arts/1130295695.webp",
+      "song_ids": [
+        "1130295695",
+        "1078245052"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "lynk-lee",
+      "name": "Lynk Lee",
+      "image": "https://thantrieu.com/resources/arts/1078245045.webp",
+      "song_ids": [
+        "1078245045",
+        "1078245046"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "mck",
+      "name": "MCK",
+      "image": "https://thantrieu.com/resources/arts/1078245031.webp",
+      "song_ids": [
+        "1078245031",
+        "1078245037"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "only-c",
+      "name": "Only C",
+      "image": "https://thantrieu.com/resources/arts/1130295695.webp",
+      "song_ids": [
+        "1130295695",
+        "1078245052"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "phuong-ly",
+      "name": "Phương Ly",
+      "image": "https://thantrieu.com/resources/arts/1078245010.webp",
+      "song_ids": [
+        "1078245010",
+        "1078245050"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "soobin",
+      "name": "SOOBIN",
+      "image": "https://thantrieu.com/resources/arts/1078245018.webp",
+      "song_ids": [
+        "1078245018",
+        "1078245070"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "tlinh",
+      "name": "Tlinh",
+      "image": "https://thantrieu.com/resources/arts/1078245017.webp",
+      "song_ids": [
+        "1078245017",
+        "1078245033"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "trung-quan-idol",
+      "name": "Trung Quân Idol",
+      "image": "https://thantrieu.com/resources/arts/1074872458.webp",
+      "song_ids": [
+        "1074872458",
+        "1075365502"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "trung-tran",
+      "name": "Trung Trần",
+      "image": "https://thantrieu.com/resources/arts/1078245031.webp",
+      "song_ids": [
+        "1078245031",
+        "1078245039"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "truc-nhan",
+      "name": "Trúc Nhân",
+      "image": "https://thantrieu.com/resources/arts/1078245043.webp",
+      "song_ids": [
+        "1078245043",
+        "1078245044"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "trinh-thang-binh",
+      "name": "Trịnh Thăng Bình",
+      "image": "https://thantrieu.com/resources/arts/1078245024.webp",
+      "song_ids": [
+        "1078245024",
+        "1078245025"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "van-mai-huong",
+      "name": "Văn Mai Hương",
+      "image": "https://thantrieu.com/resources/arts/1078245008.webp",
+      "song_ids": [
+        "1078245008",
+        "1078245061"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "inh-tung-huy",
+      "name": "Đinh Tùng Huy",
+      "image": "https://thantrieu.com/resources/arts/1130295702.webp",
+      "song_ids": [
+        "1130295702",
+        "1130295705"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "ong-nhi",
+      "name": "Đông Nhi",
+      "image": "https://thantrieu.com/resources/arts/1078245057.webp",
+      "song_ids": [
+        "1078245057",
+        "1078245058"
+      ],
+      "song_count": 2
+    },
+    {
+      "id": "93new-g",
+      "name": "93NEW-G",
+      "image": "https://thantrieu.com/resources/arts/1130295698.webp",
+      "song_ids": [
+        "1130295698"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "anh-quan-idol",
+      "name": "Anh Quân Idol",
+      "image": "https://thantrieu.com/resources/arts/1074952862.webp",
+      "song_ids": [
+        "1074952862"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "b-ray",
+      "name": "B Ray",
+      "image": "https://thantrieu.com/resources/arts/1078245053.webp",
+      "song_ids": [
+        "1078245053"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "bigdaddy",
+      "name": "BigDaddy",
+      "image": "https://thantrieu.com/resources/arts/1074793765.webp",
+      "song_ids": [
+        "1074793765"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "bui-anh-tuan",
+      "name": "Bùi Anh Tuấn",
+      "image": "https://thantrieu.com/resources/arts/1078245067.webp",
+      "song_ids": [
+        "1078245067"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "bach-cong-khanh",
+      "name": "Bạch Công Khanh",
+      "image": "https://thantrieu.com/resources/arts/1078245042.webp",
+      "song_ids": [
+        "1078245042"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "bao-anh",
+      "name": "Bảo Anh",
+      "image": "https://thantrieu.com/resources/arts/1078245013.webp",
+      "song_ids": [
+        "1078245013"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "bao-tram",
+      "name": "Bảo Trâm",
+      "image": "https://thantrieu.com/resources/arts/1078245019.webp",
+      "song_ids": [
+        "1078245019"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "chillies",
+      "name": "Chillies",
+      "image": "https://thantrieu.com/resources/arts/1078245009.webp",
+      "song_ids": [
+        "1078245009"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "chau-khai-phong",
+      "name": "Châu Khải Phong",
+      "image": "https://thantrieu.com/resources/arts/1130295703.webp",
+      "song_ids": [
+        "1130295703"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "d-blue",
+      "name": "D.Blue",
+      "image": "https://thantrieu.com/resources/arts/1078245054.webp",
+      "song_ids": [
+        "1078245054"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "danny-nguyen",
+      "name": "Danny Nguyễn",
+      "image": "https://thantrieu.com/resources/arts/1078245065.webp",
+      "song_ids": [
+        "1078245065"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "duong-hoang-yen",
+      "name": "Dương Hoàng Yến",
+      "image": "https://thantrieu.com/resources/arts/1078245066.webp",
+      "song_ids": [
+        "1078245066"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "duong-truong-giang",
+      "name": "Dương Trường Giang",
+      "image": "https://thantrieu.com/resources/arts/1078245067.webp",
+      "song_ids": [
+        "1078245067"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "emcee-l",
+      "name": "Emcee L",
+      "image": "https://thantrieu.com/resources/arts/1078245032.webp",
+      "song_ids": [
+        "1078245032"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "enhypen",
+      "name": "ENHYPEN",
+      "image": "https://thantrieu.com/resources/arts/1078245028.webp",
+      "song_ids": [
+        "1078245028"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "erik",
+      "name": "ERIK",
+      "image": "https://thantrieu.com/resources/arts/1121429554.webp",
+      "song_ids": [
+        "1121429554"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "freak-d",
+      "name": "Freak D",
+      "image": "https://thantrieu.com/resources/arts/1130295694.webp",
+      "song_ids": [
+        "1130295694"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "gia-cung-nhau-la-uoc-single",
+      "name": "Già Cùng Nhau Là Được(Single)",
+      "image": "https://thantrieu.com/resources/arts/1078245055.webp",
+      "song_ids": [
+        "1078245055"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "han-sara",
+      "name": "Han Sara",
+      "image": "https://thantrieu.com/resources/arts/1078245053.webp",
+      "song_ids": [
+        "1078245053"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "hoa-vinh",
+      "name": "Hoa Vinh",
+      "image": "https://thantrieu.com/resources/arts/1078245021.webp",
+      "song_ids": [
+        "1078245021"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "hoai-lam",
+      "name": "Hoài Lâm",
+      "image": "https://thantrieu.com/resources/arts/1130295696.webp",
+      "song_ids": [
+        "1130295696"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "hoang-ton",
+      "name": "Hoàng Tôn",
+      "image": "https://thantrieu.com/resources/arts/1078245012.webp",
+      "song_ids": [
+        "1078245012"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "huyr",
+      "name": "HuyR",
+      "image": "https://thantrieu.com/resources/arts/1121430002.webp",
+      "song_ids": [
+        "1121430002"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "hwangmike",
+      "name": "HwangMike",
+      "image": "https://thantrieu.com/resources/arts/1078245039.webp",
+      "song_ids": [
+        "1078245039"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ha-linh",
+      "name": "Hà Linh",
+      "image": "https://thantrieu.com/resources/arts/1078245015.webp",
+      "song_ids": [
+        "1078245015"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ha-nhi",
+      "name": "Hà Nhi",
+      "image": "https://thantrieu.com/resources/arts/1078245063.webp",
+      "song_ids": [
+        "1078245063"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "huong-tram",
+      "name": "Hương Tràm",
+      "image": "https://thantrieu.com/resources/arts/1075363470.webp",
+      "song_ids": [
+        "1075363470"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "hang-bingboong",
+      "name": "Hằng BingBoong",
+      "image": "https://thantrieu.com/resources/arts/1078245056.webp",
+      "song_ids": [
+        "1078245056"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "itsnk",
+      "name": "Itsnk",
+      "image": "https://thantrieu.com/resources/arts/1078245007.webp",
+      "song_ids": [
+        "1078245007"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "khang-viet",
+      "name": "Khang Việt",
+      "image": "https://thantrieu.com/resources/arts/1130295701.webp",
+      "song_ids": [
+        "1130295701"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "khanh-binh",
+      "name": "Khánh Bình",
+      "image": "https://thantrieu.com/resources/arts/1078009835.webp",
+      "song_ids": [
+        "1078009835"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "killic",
+      "name": "Killic",
+      "image": "https://thantrieu.com/resources/arts/1078245054.webp",
+      "song_ids": [
+        "1078245054"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "kiwi-ngo-mai-trang",
+      "name": "Kiwi Ngô Mai Trang",
+      "image": "https://thantrieu.com/resources/arts/1078245064.webp",
+      "song_ids": [
+        "1078245064"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "le",
+      "name": "Lê",
+      "image": "https://thantrieu.com/resources/arts/1078245066.webp",
+      "song_ids": [
+        "1078245066"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "le-quyen",
+      "name": "Lệ Quyên",
+      "image": "https://thantrieu.com/resources/arts/1074276774.webp",
+      "song_ids": [
+        "1074276774"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "madihu",
+      "name": "Madihu",
+      "image": "https://thantrieu.com/resources/arts/1078245015.webp",
+      "song_ids": [
+        "1078245015"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "minh-huy",
+      "name": "Minh Huy",
+      "image": "https://thantrieu.com/resources/arts/1078245014.webp",
+      "song_ids": [
+        "1078245014"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "mono",
+      "name": "MONO",
+      "image": "https://thantrieu.com/resources/arts/1078245011.webp",
+      "song_ids": [
+        "1078245011"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "mr-t",
+      "name": "Mr.T",
+      "image": "https://thantrieu.com/resources/arts/1078245056.webp",
+      "song_ids": [
+        "1078245056"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "muoii",
+      "name": "Muộii",
+      "image": "https://thantrieu.com/resources/arts/1078245032.webp",
+      "song_ids": [
+        "1078245032"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "manh-quynh",
+      "name": "Mạnh Quỳnh",
+      "image": "https://thantrieu.com/resources/arts/1073969323.webp",
+      "song_ids": [
+        "1073969323"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "nal",
+      "name": "Nal",
+      "image": "https://thantrieu.com/resources/arts/1130295698.webp",
+      "song_ids": [
+        "1130295698"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ngoc-dieu",
+      "name": "Ngọc Diệu",
+      "image": "https://thantrieu.com/resources/arts/1078009835.webp",
+      "song_ids": [
+        "1078009835"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "noo-phuoc-thinh",
+      "name": "Noo Phước Thịnh",
+      "image": "https://thantrieu.com/resources/arts/1078245023.webp",
+      "song_ids": [
+        "1078245023"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ozzy-osbourne",
+      "name": "Ozzy Osbourne",
+      "image": "https://thantrieu.com/resources/arts/1078245040.webp",
+      "song_ids": [
+        "1078245040"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "p",
+      "name": "P",
+      "image": "https://thantrieu.com/resources/arts/1130295694.webp",
+      "song_ids": [
+        "1130295694"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "phan-manh-quynh",
+      "name": "Phan Mạnh Quỳnh",
+      "image": "https://thantrieu.com/resources/arts/1074748272.webp",
+      "song_ids": [
+        "1074748272"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "phan-thien-ngan",
+      "name": "Phan Thiên Ngân",
+      "image": "https://thantrieu.com/resources/arts/1074869263.webp",
+      "song_ids": [
+        "1074869263"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "phi-nhung",
+      "name": "Phi Nhung",
+      "image": "https://thantrieu.com/resources/arts/1075536512.webp",
+      "song_ids": [
+        "1075536512"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "phuc",
+      "name": "Phúc",
+      "image": "https://thantrieu.com/resources/arts/1130295694.webp",
+      "song_ids": [
+        "1130295694"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "phuc-bang",
+      "name": "Phúc Bằng",
+      "image": "https://thantrieu.com/resources/arts/1078245046.webp",
+      "song_ids": [
+        "1078245046"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "phuc-du",
+      "name": "Phúc Du",
+      "image": "https://thantrieu.com/resources/arts/1078245030.webp",
+      "song_ids": [
+        "1078245030"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "post-malone",
+      "name": "Post Malone",
+      "image": "https://thantrieu.com/resources/arts/1078245040.webp",
+      "song_ids": [
+        "1078245040"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "quang-ha",
+      "name": "Quang Hà",
+      "image": "https://thantrieu.com/resources/arts/1078245064.webp",
+      "song_ids": [
+        "1078245064"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "quang-hung-masterd",
+      "name": "Quang Hùng MasterD",
+      "image": "https://thantrieu.com/resources/arts/1121430001.webp",
+      "song_ids": [
+        "1121430001"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "quang-le",
+      "name": "Quang Lê",
+      "image": "https://thantrieu.com/resources/arts/1074276774.webp",
+      "song_ids": [
+        "1074276774"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "quach-thanh-danh",
+      "name": "Quách Thành Danh",
+      "image": "https://thantrieu.com/resources/arts/1078245006.webp",
+      "song_ids": [
+        "1078245006"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "rapital-phong-khin",
+      "name": "Rapital Phong Khin",
+      "image": "https://thantrieu.com/resources/arts/1078245037.webp",
+      "song_ids": [
+        "1078245037"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "richard-mar",
+      "name": "Richard Mar",
+      "image": "https://thantrieu.com/resources/arts/1073969708.webp",
+      "song_ids": [
+        "1073969708"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ricky-j",
+      "name": "Ricky J",
+      "image": "https://thantrieu.com/resources/arts/1073850016.webp",
+      "song_ids": [
+        "1073850016"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "sara-luu",
+      "name": "Sara Luu",
+      "image": "https://thantrieu.com/resources/arts/1078245065.webp",
+      "song_ids": [
+        "1078245065"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "sean",
+      "name": "Sean",
+      "image": "https://thantrieu.com/resources/arts/1078245014.webp",
+      "song_ids": [
+        "1078245014"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "shayne-ward",
+      "name": "Shayne Ward",
+      "image": "https://thantrieu.com/resources/arts/1073419268.webp",
+      "song_ids": [
+        "1073419268"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "suboi",
+      "name": "Suboi",
+      "image": "https://thantrieu.com/resources/arts/1078245059.webp",
+      "song_ids": [
+        "1078245059"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "suni-ha-linh",
+      "name": "Suni Hạ Linh",
+      "image": "https://thantrieu.com/resources/arts/1078245027.webp",
+      "song_ids": [
+        "1078245027"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "son-tung-m-tp",
+      "name": "Sơn Tùng M-TP",
+      "image": "https://thantrieu.com/resources/arts/1078245051.webp",
+      "song_ids": [
+        "1078245051"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "thai-trinh",
+      "name": "Thái Trinh",
+      "image": "https://thantrieu.com/resources/arts/1078245069.webp",
+      "song_ids": [
+        "1078245069"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "tien-tien",
+      "name": "Tiên Tiên",
+      "image": "https://thantrieu.com/resources/arts/1078245041.webp",
+      "song_ids": [
+        "1078245041"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "touliver",
+      "name": "Touliver",
+      "image": "https://thantrieu.com/resources/arts/1078245038.webp",
+      "song_ids": [
+        "1078245038"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "trang",
+      "name": "Trang",
+      "image": "https://thantrieu.com/resources/arts/1078245041.webp",
+      "song_ids": [
+        "1078245041"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "trang-phap",
+      "name": "Trang Pháp",
+      "image": "https://thantrieu.com/resources/arts/1078245068.webp",
+      "song_ids": [
+        "1078245068"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "travis-scott",
+      "name": "Travis Scott",
+      "image": "https://thantrieu.com/resources/arts/1078245040.webp",
+      "song_ids": [
+        "1078245040"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "trung-quan",
+      "name": "Trung Quân",
+      "image": "https://thantrieu.com/resources/arts/1078245008.webp",
+      "song_ids": [
+        "1078245008"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "tra-my-idol",
+      "name": "Trà My Idol",
+      "image": "https://thantrieu.com/resources/arts/1078245022.webp",
+      "song_ids": [
+        "1078245023"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "tuan-hung",
+      "name": "Tuấn Hưng",
+      "image": "https://thantrieu.com/resources/arts/1078245026.webp",
+      "song_ids": [
+        "1078245026"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "tvk",
+      "name": "TVk",
+      "image": "https://thantrieu.com/resources/arts/1130295698.webp",
+      "song_ids": [
+        "1130295698"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "uyen-linh",
+      "name": "Uyên Linh",
+      "image": "https://thantrieu.com/resources/arts/1078245016.webp",
+      "song_ids": [
+        "1078245016"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "uan-bac",
+      "name": "uân Bắc",
+      "image": "https://thantrieu.com/resources/arts/1078245066.webp",
+      "song_ids": [
+        "1078245066"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "vu",
+      "name": "Vũ",
+      "image": "https://thantrieu.com/resources/arts/1078245016.webp",
+      "song_ids": [
+        "1078245016"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "wren-evans",
+      "name": "Wren Evans",
+      "image": "https://thantrieu.com/resources/arts/1078245007.webp",
+      "song_ids": [
+        "1078245007"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "yanbi",
+      "name": "Yanbi",
+      "image": "https://thantrieu.com/resources/arts/1078245056.webp",
+      "song_ids": [
+        "1078245056"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "ut-nhi-mino",
+      "name": "Út Nhị Mino",
+      "image": "https://thantrieu.com/resources/arts/1130295700.webp",
+      "song_ids": [
+        "1130295700"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "en",
+      "name": "Đen",
+      "image": "https://thantrieu.com/resources/arts/1078245036.webp",
+      "song_ids": [
+        "1078245036"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "inh-dung",
+      "name": "Đình Dũng",
+      "image": "https://thantrieu.com/resources/arts/1130295697.webp",
+      "song_ids": [
+        "1130295697"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "at-long-vinh",
+      "name": "Đạt Long Vinh",
+      "image": "https://thantrieu.com/resources/arts/1130295704.webp",
+      "song_ids": [
+        "1130295704"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "o-thanh-duy",
+      "name": "Đỗ Thành Duy",
+      "image": "https://thantrieu.com/resources/arts/1130295699.webp",
+      "song_ids": [
+        "1130295699"
+      ],
+      "song_count": 1
+    },
+    {
+      "id": "uc-phuc",
+      "name": "Đức Phúc",
+      "image": "https://thantrieu.com/resources/arts/1078245049.webp",
+      "song_ids": [
+        "1078245049"
+      ],
+      "song_count": 1
+    }
+  ]
+}
