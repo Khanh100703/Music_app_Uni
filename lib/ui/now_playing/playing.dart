@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
 import '../../data/model/song.dart';
-import 'package:app_music/ui/now_playing/audio_player_manager.dart';
+import '../../services/app_settings_controller.dart';
+import '../../services/library_controller.dart';
+import '../library/add_to_playlist_sheet.dart';
+import 'audio_player_manager.dart';
 
 class NowPlaying extends StatelessWidget {
   const NowPlaying({super.key, required this.playingSong, required this.songs});
@@ -42,6 +45,7 @@ class _NowPlayingPageState extends State<NowPlayingPage>
   late Song _song;
   bool _isShuffle = false;
   late LoopMode _loopMode;
+  final LibraryController _libraryController = LibraryController.instance;
 
   @override
   void initState() {
@@ -52,16 +56,28 @@ class _NowPlayingPageState extends State<NowPlayingPage>
       duration: const Duration(seconds: 20),
     );
     _audioPlayerManager = AudioPlayerManager();
-    if(_audioPlayerManager.songUrl.compareTo(_song.source)!=0){
-      _audioPlayerManager.updateSongUrl(
-          _song.source,
-      );
-      _audioPlayerManager.prepare(isNewSong: true);
-    } else {
-      _audioPlayerManager.prepare(isNewSong: false);
-    }
     _selectedItemIndex = widget.songs.indexOf(widget.playingSong);
-    _loopMode = LoopMode.off;
+    _loopMode = _mapLoopMode(AppSettingsController.instance.defaultLoopMode);
+    _audioPlayerManager.player.setLoopMode(_loopMode);
+    _initialisePlayback();
+  }
+
+  void _initialisePlayback() {
+    Future.microtask(() async {
+      final needsNewSong =
+          _audioPlayerManager.currentSong?.id != _song.id ||
+              _audioPlayerManager.songUrl != _song.source;
+      await _audioPlayerManager.updateSongUrl(
+        _song.source,
+        song: _song,
+        playlist: widget.songs,
+        isNewSong: needsNewSong,
+      );
+      if (!mounted) return;
+      if (_audioPlayerManager.player.playing) {
+        _playRotationAnimation();
+      }
+    });
   }
 
 
@@ -75,7 +91,7 @@ class _NowPlayingPageState extends State<NowPlayingPage>
       navigationBar: CupertinoNavigationBar(
         middle: Text('Now Playing'),
         trailing: IconButton(
-          onPressed: () {},
+          onPressed: _showAddToPlaylist,
           icon: const Icon(Icons.more_horiz),
         ),
       ),
@@ -117,8 +133,8 @@ class _NowPlayingPageState extends State<NowPlayingPage>
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.share_outlined),
+                        onPressed: _showAddToPlaylist,
+                        icon: const Icon(Icons.queue_music),
                         color: Theme.of(context).colorScheme.primary,
                       ),
                       Column(
@@ -144,10 +160,23 @@ class _NowPlayingPageState extends State<NowPlayingPage>
                           ),
                         ],
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.favorite_outline),
-                        color: Theme.of(context).colorScheme.primary,
+                      AnimatedBuilder(
+                        animation: _libraryController,
+                        builder: (context, _) {
+                          final isFavorite =
+                              _libraryController.isFavorite(_song.id);
+                          return IconButton(
+                            onPressed: _toggleFavorite,
+                            icon: Icon(
+                              isFavorite
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                            ),
+                            color: isFavorite
+                                ? Colors.red
+                                : Theme.of(context).colorScheme.primary,
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -196,14 +225,18 @@ class _NowPlayingPageState extends State<NowPlayingPage>
             size: 24,
           ),
           MediaButtonControl(
-            function: _setPrevSong,
+            function: () {
+              _setPrevSong();
+            },
             icon: Icons.skip_previous,
             color: Colors.deepPurple,
             size: 36,
           ),
           _playButton(),
           MediaButtonControl(
-            function: _setNextSong,
+            function: () {
+              _setNextSong();
+            },
             icon: Icons.skip_next,
             color: Colors.deepPurple,
             size: 36,
@@ -311,7 +344,7 @@ class _NowPlayingPageState extends State<NowPlayingPage>
     return _isShuffle ? Colors.deepPurple : Colors.grey;
   }
 
-  void _setNextSong() {
+  Future<void> _setNextSong() async {
     if (_isShuffle) {
       var random = Random();
       _selectedItemIndex = random.nextInt(widget.songs.length);
@@ -324,16 +357,20 @@ class _NowPlayingPageState extends State<NowPlayingPage>
       _selectedItemIndex = _selectedItemIndex % widget.songs.length;
     }
     final nextSong = widget.songs[_selectedItemIndex];
-    _audioPlayerManager.updateSongUrl(
+    await _audioPlayerManager.updateSongUrl(
       nextSong.source,
       song: nextSong,
       playlist: widget.songs,
+      isNewSong: true,
     );
     _resetRotationAnimation();
     setState(() => _song = nextSong);
+    if (_audioPlayerManager.player.playing) {
+      _playRotationAnimation();
+    }
   }
 
-  void _setPrevSong() {
+  Future<void> _setPrevSong() async {
     if (_isShuffle) {
       var random = Random();
       _selectedItemIndex = random.nextInt(widget.songs.length);
@@ -346,13 +383,17 @@ class _NowPlayingPageState extends State<NowPlayingPage>
       _selectedItemIndex = (-1 * _selectedItemIndex) % widget.songs.length;
     }
     final prevSong = widget.songs[_selectedItemIndex];
-    _audioPlayerManager.updateSongUrl(
+    await _audioPlayerManager.updateSongUrl(
       prevSong.source,
       song: prevSong,
       playlist: widget.songs,
+      isNewSong: true,
     );
     _resetRotationAnimation();
     setState(() => _song = prevSong);
+    if (_audioPlayerManager.player.playing) {
+      _playRotationAnimation();
+    }
   }
 
   void _setupRepeatOption(){
@@ -380,6 +421,37 @@ class _NowPlayingPageState extends State<NowPlayingPage>
     return _loopMode == LoopMode.off
         ? Colors.grey
         : Colors.deepPurple;
+  }
+
+  LoopMode _mapLoopMode(DefaultLoopMode mode) {
+    return switch (mode) {
+      DefaultLoopMode.one => LoopMode.one,
+      DefaultLoopMode.all => LoopMode.all,
+      DefaultLoopMode.off => LoopMode.off,
+    };
+  }
+
+  void _showAddToPlaylist() {
+    showModalBottomSheet<String>(
+      context: context,
+      builder: (_) => AddToPlaylistSheet(song: _song),
+    ).then((value) {
+      if (!mounted || value == null || value.isEmpty) return;
+      _showSnackBar(value);
+    });
+  }
+
+  void _toggleFavorite() {
+    _libraryController.toggleFavorite(_song);
+    final message = _libraryController.isFavorite(_song.id)
+        ? 'Đã thêm vào Yêu thích'
+        : 'Đã xoá khỏi Yêu thích';
+    _showSnackBar(message);
+  }
+
+  void _showSnackBar(String message) {
+    final messenger = ScaffoldMessenger.maybeOf(context);
+    messenger?.showSnackBar(SnackBar(content: Text(message)));
   }
 
 

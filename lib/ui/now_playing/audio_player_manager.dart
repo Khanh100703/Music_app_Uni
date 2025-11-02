@@ -2,7 +2,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
+
 import '../../data/model/song.dart';
+import '../../services/app_settings_controller.dart';
+import '../../services/library_controller.dart';
 
 class AudioPlayerManager {
   AudioPlayerManager._internal();
@@ -18,33 +21,38 @@ class AudioPlayerManager {
 
   String songUrl = '';
 
-
-  void prepare({bool isNewSong = false}) {
-      durationState = Rx.combineLatest2<Duration, PlaybackEvent, DurationState>(
-        player.positionStream,
-        player.playbackEventStream,
-            (position, playbackEvent) =>
-            DurationState(
-              progress: position,
-              buffered: playbackEvent.bufferedPosition,
-              total: playbackEvent.duration,
-            )
-        );
-    if (isNewSong){
-      player.setUrl(songUrl);
+  Future<void> prepare({bool isNewSong = false}) async {
+    durationState ??= Rx.combineLatest2<Duration, PlaybackEvent, DurationState>(
+      player.positionStream,
+      player.playbackEventStream,
+      (position, playbackEvent) => DurationState(
+        progress: position,
+        buffered: playbackEvent.bufferedPosition,
+        total: playbackEvent.duration,
+      ),
+    );
+    if (isNewSong) {
+      await player.setUrl(songUrl);
+      await player.setLoopMode(_loopModeFromSettings());
+      if (AppSettingsController.instance.autoPlayNext) {
+        await player.play();
+      }
     }
   }
 
-
-  void updateSongUrl(String url, {Song? song, List<Song>? playlist, bool isNewSong = false}) {
+  Future<void> updateSongUrl(
+    String url, {
+    Song? song,
+    List<Song>? playlist,
+    bool isNewSong = false,
+  }) async {
     songUrl = url;
     _currentSong = song ?? _currentSong;
     _playlist = playlist ?? _playlist;
     currentSongNotifier.value = _currentSong;
-    if (isNewSong) {
-      prepare();
-    } else {
-      prepare(isNewSong: true);
+    await prepare(isNewSong: isNewSong);
+    if (song != null) {
+      await LibraryController.instance.logRecentlyPlayed(song);
     }
   }
 
@@ -53,6 +61,14 @@ class AudioPlayerManager {
 
 
   List<Song>? get playlist => _playlist;
+
+  LoopMode _loopModeFromSettings() {
+    return switch (AppSettingsController.instance.defaultLoopMode) {
+      DefaultLoopMode.one => LoopMode.one,
+      DefaultLoopMode.all => LoopMode.all,
+      DefaultLoopMode.off => LoopMode.off,
+    };
+  }
 
 
   Future<void> stop() async {
