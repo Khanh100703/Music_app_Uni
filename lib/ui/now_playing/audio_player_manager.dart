@@ -37,11 +37,13 @@ class AudioPlayerManager {
   Song? _currentSong;
   List<Song> _playlist = <Song>[];
   DateTime? _interactionLockedUntil;
+  bool _isStopping = false;
 
   Song? get currentSong => _currentSong;
   List<Song> get playlist => List.unmodifiable(_playlist);
   bool queueMatches(List<Song> songs) => _hasSamePlaylist(songs);
   bool get interactionsLocked {
+    if (_isStopping) return true;
     final until = _interactionLockedUntil;
     if (until == null) return false;
     return DateTime.now().isBefore(until);
@@ -98,14 +100,24 @@ class AudioPlayerManager {
   }
 
   Future<void> stop() async {
-    _lockInteractions();
-    await player.stop();
-    _currentSong = null;
-    currentSongNotifier.value = null;
+    _isStopping = true;
+    _lockInteractions(const Duration(milliseconds: 500));
+    try {
+      await player.stop();
+    } finally {
+      _currentSong = null;
+      currentSongNotifier.value = null;
+      _lockInteractions(const Duration(milliseconds: 500));
+      _isStopping = false;
+    }
   }
 
   void _lockInteractions([Duration duration = const Duration(milliseconds: 350)]) {
-    _interactionLockedUntil = DateTime.now().add(duration);
+    final proposed = DateTime.now().add(duration);
+    final current = _interactionLockedUntil;
+    if (current == null || proposed.isAfter(current)) {
+      _interactionLockedUntil = proposed;
+    }
   }
 
   void _handleSequenceChanged(SequenceState? state) {

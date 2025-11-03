@@ -59,7 +59,8 @@ class _MiniPlayerContent extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(12),
                       onTap: () {
-                        if (manager.interactionsLocked) {
+                        if (manager.interactionsLocked ||
+                            manager.currentSong == null) {
                           return;
                         }
                         Navigator.of(context).push(
