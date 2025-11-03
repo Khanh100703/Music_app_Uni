@@ -367,6 +367,9 @@ class _HomeTabPageState extends State<HomeTabPage> {
     if (manager.interactionsLocked) {
       return;
     }
+    if (manager.isNowPlayingOpen) {
+      return;
+    }
     final success = await manager.playSongs(
       song,
       startSong: songs,
@@ -378,6 +381,7 @@ class _HomeTabPageState extends State<HomeTabPage> {
       );
       return;
     }
+    manager.setNowPlayingOpen(true);
     Navigator.push(
       context,
       CupertinoPageRoute(
@@ -385,7 +389,9 @@ class _HomeTabPageState extends State<HomeTabPage> {
           return NowPlaying(songs: manager.playlist, playingSong: songs);
         },
       ),
-    );
+    ).whenComplete(() {
+      manager.setNowPlayingOpen(false);
+    });
   }
 }
 
@@ -557,6 +563,9 @@ class _FilteredSongsPage extends StatelessWidget {
                     if (manager.interactionsLocked) {
                       return;
                     }
+                    if (manager.isNowPlayingOpen) {
+                      return;
+                    }
                     final success = await manager.playSongs(
                       songs,
                       startSong: s,
@@ -570,6 +579,7 @@ class _FilteredSongsPage extends StatelessWidget {
                       return;
                     }
                     if (!Navigator.of(context).mounted) return;
+                    manager.setNowPlayingOpen(true);
                     Navigator.push(
                       context,
                       CupertinoPageRoute(
@@ -578,7 +588,9 @@ class _FilteredSongsPage extends StatelessWidget {
                           playingSong: manager.currentSong ?? s,
                         ),
                       ),
-                    );
+                    ).whenComplete(() {
+                      manager.setNowPlayingOpen(false);
+                    });
                   },
                 );
               },

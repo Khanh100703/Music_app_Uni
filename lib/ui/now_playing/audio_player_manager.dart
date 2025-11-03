@@ -33,13 +33,12 @@ class AudioPlayerManager {
   ConcatenatingAudioSource? _audioSource;
 
   static final ValueNotifier<Song?> currentSongNotifier = ValueNotifier(null);
-  static final ValueNotifier<bool> miniPlayerVisibility =
-      ValueNotifier<bool>(true);
 
   Song? _currentSong;
   List<Song> _playlist = <Song>[];
   DateTime? _interactionLockedUntil;
   bool _isStopping = false;
+  bool _nowPlayingOpen = false;
 
   Song? get currentSong => _currentSong;
   List<Song> get playlist => List.unmodifiable(_playlist);
@@ -50,6 +49,7 @@ class AudioPlayerManager {
     if (until == null) return false;
     return DateTime.now().isBefore(until);
   }
+  bool get isNowPlayingOpen => _nowPlayingOpen;
 
   Future<bool> playSongs(
     List<Song> songs, {
@@ -111,12 +111,16 @@ class AudioPlayerManager {
       currentSongNotifier.value = null;
       _lockInteractions(const Duration(milliseconds: 500));
       _isStopping = false;
+      _nowPlayingOpen = false;
     }
   }
 
-  void setMiniPlayerVisible(bool visible) {
-    if (miniPlayerVisibility.value == visible) return;
-    miniPlayerVisibility.value = visible;
+  void setNowPlayingOpen(bool value) {
+    if (_nowPlayingOpen == value) return;
+    _nowPlayingOpen = value;
+    if (value) {
+      _lockInteractions(const Duration(milliseconds: 300));
+    }
   }
 
   void _lockInteractions([Duration duration = const Duration(milliseconds: 350)]) {
@@ -169,6 +173,7 @@ class AudioPlayerManager {
     unawaited(_sequenceSub?.cancel());
     player.dispose();
     currentSongNotifier.value = null;
+    _nowPlayingOpen = false;
   }
 }
 

@@ -74,6 +74,9 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
                     if (manager.interactionsLocked) {
                       return;
                     }
+                    if (manager.isNowPlayingOpen) {
+                      return;
+                    }
                     final success = await manager.playSongs(
                       songs,
                       startSong: song,
@@ -87,6 +90,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
                       return;
                     }
                     if (!Navigator.of(context).mounted) return;
+                    manager.setNowPlayingOpen(true);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -95,7 +99,9 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
                           songs: manager.playlist,
                         ),
                       ),
-                    );
+                    ).whenComplete(() {
+                      manager.setNowPlayingOpen(false);
+                    });
                   },
                 ),
               ),

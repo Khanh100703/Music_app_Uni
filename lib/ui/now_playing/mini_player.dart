@@ -16,17 +16,11 @@ class MiniPlayer extends StatelessWidget {
     if (!AppSettingsController.instance.miniPlayerEnabled) {
       return const SizedBox.shrink();
     }
-    return ValueListenableBuilder<bool>(
-      valueListenable: AudioPlayerManager.miniPlayerVisibility,
-      builder: (context, visible, _) {
-        if (!visible) return const SizedBox.shrink();
-        return ValueListenableBuilder<Song?>(
-          valueListenable: AudioPlayerManager.currentSongNotifier,
-          builder: (context, song, __) {
-            if (song == null) return const SizedBox.shrink();
-            return _MiniPlayerContent(song: song);
-          },
-        );
+    return ValueListenableBuilder<Song?>(
+      valueListenable: AudioPlayerManager.currentSongNotifier,
+      builder: (context, song, __) {
+        if (song == null) return const SizedBox.shrink();
+        return _MiniPlayerContent(song: song);
       },
     );
   }
@@ -66,17 +60,23 @@ class _MiniPlayerContent extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       onTap: () {
                         if (manager.interactionsLocked ||
-                            manager.currentSong == null) {
+                            manager.currentSong == null ||
+                            manager.isNowPlayingOpen) {
                           return;
                         }
-                        Navigator.of(context).push(
+                        manager.setNowPlayingOpen(true);
+                        Navigator.of(context)
+                            .push(
                           CupertinoPageRoute(
                             builder: (_) => NowPlaying(
                               playingSong: song,
                               songs: songs,
                             ),
                           ),
-                        );
+                        )
+                            .whenComplete(() {
+                          manager.setNowPlayingOpen(false);
+                        });
                       },
                       child: Row(
                         children: [
