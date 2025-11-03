@@ -33,6 +33,8 @@ class AudioPlayerManager {
   ConcatenatingAudioSource? _audioSource;
 
   static final ValueNotifier<Song?> currentSongNotifier = ValueNotifier(null);
+  static final ValueNotifier<bool> miniPlayerVisibility =
+      ValueNotifier<bool>(true);
 
   Song? _currentSong;
   List<Song> _playlist = <Song>[];
@@ -110,6 +112,11 @@ class AudioPlayerManager {
       _lockInteractions(const Duration(milliseconds: 500));
       _isStopping = false;
     }
+  }
+
+  void setMiniPlayerVisible(bool visible) {
+    if (miniPlayerVisibility.value == visible) return;
+    miniPlayerVisibility.value = visible;
   }
 
   void _lockInteractions([Duration duration = const Duration(milliseconds: 350)]) {

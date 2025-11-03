@@ -57,6 +57,7 @@ class _NowPlayingPageState extends State<NowPlayingPage>
       duration: const Duration(seconds: 20),
     );
     _audioPlayerManager = AudioPlayerManager();
+    _audioPlayerManager.setMiniPlayerVisible(false);
     _selectedItemIndex = widget.songs.indexOf(widget.playingSong);
     _loopMode = _audioPlayerManager.player.loopMode;
     _listenToIndexChanges();
@@ -220,6 +221,7 @@ class _NowPlayingPageState extends State<NowPlayingPage>
 
   @override
   void dispose() {
+    _audioPlayerManager.setMiniPlayerVisible(true);
     _imageAnimationController.dispose();
     unawaited(_indexSubscription?.cancel());
     super.dispose();

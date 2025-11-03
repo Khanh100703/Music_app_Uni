@@ -16,11 +16,17 @@ class MiniPlayer extends StatelessWidget {
     if (!AppSettingsController.instance.miniPlayerEnabled) {
       return const SizedBox.shrink();
     }
-    return ValueListenableBuilder<Song?>(
-      valueListenable: AudioPlayerManager.currentSongNotifier,
-      builder: (context, song, _) {
-        if (song == null) return const SizedBox.shrink();
-        return _MiniPlayerContent(song: song);
+    return ValueListenableBuilder<bool>(
+      valueListenable: AudioPlayerManager.miniPlayerVisibility,
+      builder: (context, visible, _) {
+        if (!visible) return const SizedBox.shrink();
+        return ValueListenableBuilder<Song?>(
+          valueListenable: AudioPlayerManager.currentSongNotifier,
+          builder: (context, song, __) {
+            if (song == null) return const SizedBox.shrink();
+            return _MiniPlayerContent(song: song);
+          },
+        );
       },
     );
   }
@@ -142,13 +148,6 @@ class _MiniPlayerContent extends StatelessWidget {
                   _MiniSkipButton(
                     manager: manager,
                     forward: true,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    tooltip: 'Đóng mini player',
-                    onPressed: () async {
-                      await manager.stop();
-                    },
                   ),
                 ],
               ),
