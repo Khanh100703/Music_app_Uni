@@ -59,6 +59,9 @@ class _MiniPlayerContent extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(12),
                       onTap: () {
+                        if (manager.interactionsLocked) {
+                          return;
+                        }
                         Navigator.of(context).push(
                           CupertinoPageRoute(
                             builder: (_) => NowPlaying(

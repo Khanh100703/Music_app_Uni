@@ -364,6 +364,9 @@ class _HomeTabPageState extends State<HomeTabPage> {
 
   Future<void> navigate(Song songs) async {
     final manager = AudioPlayerManager();
+    if (manager.interactionsLocked) {
+      return;
+    }
     final success = await manager.playSongs(
       song,
       startSong: songs,
@@ -551,6 +554,9 @@ class _FilteredSongsPage extends StatelessWidget {
                   subtitle: Text('${s.artist} • ${s.album ?? ""}'),
                   onTap: () async {
                     final manager = AudioPlayerManager();
+                    if (manager.interactionsLocked) {
+                      return;
+                    }
                     final success = await manager.playSongs(
                       songs,
                       startSong: s,

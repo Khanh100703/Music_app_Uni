@@ -73,6 +73,9 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
                   subtitle: Text(song.artist),
                   onTap: () async {
                     final manager = AudioPlayerManager();
+                    if (manager.interactionsLocked) {
+                      return;
+                    }
                     final success = await manager.playSongs(
                       songs,
                       startSong: song,
