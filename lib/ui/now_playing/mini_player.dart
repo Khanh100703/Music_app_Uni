@@ -44,103 +44,112 @@ class _MiniPlayerContent extends StatelessWidget {
         elevation: 10,
         color: theme.colorScheme.surface.withOpacity(0.95),
         borderRadius: BorderRadius.circular(18),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(18),
-          onTap: () {
-            Navigator.of(context).push(
-              CupertinoPageRoute(
-                builder: (_) => NowPlaying(
-                  playingSong: song,
-                  songs: songs,
-                ),
-              ),
-            );
-          },
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
-                child: _MiniProgressBar(manager: manager),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                child: Row(
-                  children: [
-                    ClipRRect(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
+              child: _MiniProgressBar(manager: manager),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: InkWell(
                       borderRadius: BorderRadius.circular(12),
-                      child: FadeInImage.assetNetwork(
-                        placeholder: 'assets/img.png',
-                        image: song.image,
-                        width: 56,
-                        height: 56,
-                        fit: BoxFit.cover,
-                        imageErrorBuilder: (_, __, ___) =>
-                            Image.asset('assets/img.png', width: 56, height: 56),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            song.title,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w600,
+                      onTap: () {
+                        Navigator.of(context).push(
+                          CupertinoPageRoute(
+                            builder: (_) => NowPlaying(
+                              playingSong: song,
+                              songs: songs,
                             ),
                           ),
-                          const SizedBox(height: 4),
-                          Text(
-                            song.artist,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: theme.textTheme.bodySmall,
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: FadeInImage.assetNetwork(
+                              placeholder: 'assets/img.png',
+                              image: song.image,
+                              width: 56,
+                              height: 56,
+                              fit: BoxFit.cover,
+                              imageErrorBuilder: (_, __, ___) => Image.asset(
+                                  'assets/img.png',
+                                  width: 56,
+                                  height: 56,
+                                ),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  song.title,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: theme.textTheme.titleMedium?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  song.artist,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: theme.textTheme.bodySmall,
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.queue_music),
-                      tooltip: 'Thêm vào playlist',
-                      onPressed: () {
-                        showModalBottomSheet<String>(
-                          context: context,
-                          builder: (_) => AddToPlaylistSheet(song: song),
-                        ).then((value) {
-                          if (value != null && value.isNotEmpty) {
-                            ScaffoldMessenger.maybeOf(context)?.showSnackBar(
-                              SnackBar(content: Text(value)),
-                            );
-                          }
-                        });
-                      },
-                    ),
-                    const SizedBox(width: 4),
-                    _MiniSkipButton(
-                      manager: manager,
-                      forward: false,
-                    ),
-                    _MiniPlayPauseButton(manager: manager),
-                    _MiniSkipButton(
-                      manager: manager,
-                      forward: true,
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      tooltip: 'Đóng mini player',
-                      onPressed: () async {
-                        await manager.stop();
-                      },
-                    ),
-                  ],
-                ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.queue_music),
+                    tooltip: 'Thêm vào playlist',
+                    onPressed: () {
+                      showModalBottomSheet<String>(
+                        context: context,
+                        builder: (_) => AddToPlaylistSheet(song: song),
+                      ).then((value) {
+                        if (value != null && value.isNotEmpty) {
+                          ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+                            SnackBar(content: Text(value)),
+                          );
+                        }
+                      });
+                    },
+                  ),
+                  const SizedBox(width: 4),
+                  _MiniSkipButton(
+                    manager: manager,
+                    forward: false,
+                  ),
+                  _MiniPlayPauseButton(manager: manager),
+                  _MiniSkipButton(
+                    manager: manager,
+                    forward: true,
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    tooltip: 'Đóng mini player',
+                    onPressed: () async {
+                      await manager.stop();
+                    },
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
