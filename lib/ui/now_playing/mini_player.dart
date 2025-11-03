@@ -35,81 +35,95 @@ class _MiniPlayerContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final manager = AudioPlayerManager();
     final theme = Theme.of(context);
+    final playlist = manager.playlist;
+    final songs = playlist.isEmpty ? <Song>[song] : playlist;
 
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 12),
-      elevation: 8,
-      child: InkWell(
-        onTap: () {
-          final playlist = manager.playlist ?? <Song>[song];
-          Navigator.of(context).push(
-            CupertinoPageRoute(
-              builder: (_) => NowPlaying(
-                playingSong: song,
-                songs: playlist,
-              ),
-            ),
-          );
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          child: Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: FadeInImage.assetNetwork(
-                  placeholder: 'assets/img.png',
-                  image: song.image,
-                  width: 56,
-                  height: 56,
-                  fit: BoxFit.cover,
-                  imageErrorBuilder: (_, __, ___) =>
-                      Image.asset('assets/img.png', width: 56, height: 56),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Material(
+        elevation: 10,
+        color: theme.colorScheme.surface.withOpacity(0.95),
+        borderRadius: BorderRadius.circular(18),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(18),
+          onTap: () {
+            Navigator.of(context).push(
+              CupertinoPageRoute(
+                builder: (_) => NowPlaying(
+                  playingSong: song,
+                  songs: songs,
                 ),
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
+            );
+          },
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
+                child: _MiniProgressBar(manager: manager),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: Row(
                   children: [
-                    Text(
-                      song.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.titleMedium,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: FadeInImage.assetNetwork(
+                        placeholder: 'assets/img.png',
+                        image: song.image,
+                        width: 56,
+                        height: 56,
+                        fit: BoxFit.cover,
+                        imageErrorBuilder: (_, __, ___) =>
+                            Image.asset('assets/img.png', width: 56, height: 56),
+                      ),
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      song.artist,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.bodySmall,
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            song.title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            song.artist,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 6),
-                    _MiniProgressBar(manager: manager),
+                    IconButton(
+                      icon: const Icon(Icons.queue_music),
+                      tooltip: 'Thêm vào playlist',
+                      onPressed: () {
+                        showModalBottomSheet<String>(
+                          context: context,
+                          builder: (_) => AddToPlaylistSheet(song: song),
+                        ).then((value) {
+                          if (value != null && value.isNotEmpty) {
+                            ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+                              SnackBar(content: Text(value)),
+                            );
+                          }
+                        });
+                      },
+                    ),
+                    const SizedBox(width: 4),
+                    _MiniPlayPauseButton(manager: manager),
                   ],
                 ),
               ),
-              const SizedBox(width: 8),
-              IconButton(
-                icon: const Icon(Icons.queue_music),
-                tooltip: 'Thêm vào playlist',
-                onPressed: () {
-                  showModalBottomSheet<String>(
-                    context: context,
-                    builder: (_) => AddToPlaylistSheet(song: song),
-                  ).then((value) {
-                    if (value != null && value.isNotEmpty) {
-                      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
-                        SnackBar(content: Text(value)),
-                      );
-                    }
-                  });
-                },
-              ),
-              const SizedBox(width: 4),
-              _MiniPlayPauseButton(manager: manager),
             ],
           ),
         ),
@@ -166,15 +180,16 @@ class _MiniProgressBar extends StatelessWidget {
       stream: manager.durationState,
       builder: (context, snapshot) {
         final state = snapshot.data;
-        if (state == null || state.total == null || state.total == Duration.zero) {
-          return const SizedBox(height: 4);
-        }
-        final progress = state.progress.inMilliseconds.toDouble();
-        final total = state.total!.inMilliseconds.toDouble();
-        final value = total == 0 ? 0.0 : (progress / total).clamp(0.0, 1.0);
+        final total = state?.total?.inMilliseconds.toDouble() ?? 0.0;
+        final progress = state?.progress.inMilliseconds.toDouble() ?? 0.0;
+        final value = total <= 0 ? null : (progress / total).clamp(0.0, 1.0);
         return LinearProgressIndicator(
           value: value,
           minHeight: 4,
+          backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+          valueColor: AlwaysStoppedAnimation<Color>(
+            Theme.of(context).colorScheme.primary,
+          ),
         );
       },
     );

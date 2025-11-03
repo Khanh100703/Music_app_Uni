@@ -10,7 +10,10 @@ class UserProfile {
     required this.displayName,
     required this.email,
     required this.password,
-  });
+    String? fullName,
+    String? phoneNumber,
+  })  : fullName = fullName ?? '',
+        phoneNumber = phoneNumber ?? '';
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
     return UserProfile(
@@ -18,6 +21,8 @@ class UserProfile {
       displayName: json['displayName'] as String,
       email: json['email'] as String,
       password: json['password'] as String,
+      fullName: json['fullName'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
     );
   }
 
@@ -25,12 +30,16 @@ class UserProfile {
   String displayName;
   final String email;
   final String password;
+  String fullName;
+  String phoneNumber;
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         'id': id,
         'displayName': displayName,
         'email': email,
         'password': password,
+        'fullName': fullName,
+        'phoneNumber': phoneNumber,
       };
 }
 
@@ -79,6 +88,8 @@ class AccountController extends ChangeNotifier {
     required String displayName,
     required String email,
     required String password,
+    String? fullName,
+    String? phoneNumber,
   }) async {
     if (_users.any((user) => user.email.toLowerCase() == email.toLowerCase())) {
       return false;
@@ -89,6 +100,8 @@ class AccountController extends ChangeNotifier {
       displayName: displayName,
       email: email,
       password: password,
+      fullName: fullName,
+      phoneNumber: phoneNumber,
     );
     _users.add(profile);
     await _persistUsers();
@@ -116,9 +129,38 @@ class AccountController extends ChangeNotifier {
   }
 
   Future<void> updateDisplayName(String value) async {
+    await updateProfile(displayName: value);
+  }
+
+  Future<void> updateProfile({
+    String? displayName,
+    String? fullName,
+    String? phoneNumber,
+  }) async {
     if (_currentUser == null) return;
-    if (_currentUser!.displayName == value.trim()) return;
-    _currentUser!.displayName = value.trim();
+    var changed = false;
+    if (displayName != null) {
+      final trimmed = displayName.trim();
+      if (trimmed.isNotEmpty && _currentUser!.displayName != trimmed) {
+        _currentUser!.displayName = trimmed;
+        changed = true;
+      }
+    }
+    if (fullName != null) {
+      final trimmed = fullName.trim();
+      if (_currentUser!.fullName != trimmed) {
+        _currentUser!.fullName = trimmed;
+        changed = true;
+      }
+    }
+    if (phoneNumber != null) {
+      final trimmed = phoneNumber.trim();
+      if (_currentUser!.phoneNumber != trimmed) {
+        _currentUser!.phoneNumber = trimmed;
+        changed = true;
+      }
+    }
+    if (!changed) return;
     await _persistUsers();
     notifyListeners();
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../data/model/album.dart';
 import '../../data/model/song.dart';
 import '../../data/repository/repository.dart';
+import '../now_playing/audio_player_manager.dart';
 import '../now_playing/playing.dart';
 
 class AlbumDetailPage extends StatefulWidget {
@@ -70,12 +71,28 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
                   ),
                   title: Text(song.title),
                   subtitle: Text(song.artist),
-                  onTap: () {
+                  onTap: () async {
+                    final manager = AudioPlayerManager();
+                    final success = await manager.playSongs(
+                      songs,
+                      startSong: song,
+                    );
+                    if (!success) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Không thể phát bài hát này.'),
+                        ),
+                      );
+                      return;
+                    }
+                    if (!Navigator.of(context).mounted) return;
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) =>
-                            NowPlaying(playingSong: song, songs: songs),
+                        builder: (_) => NowPlaying(
+                          playingSong: manager.currentSong ?? song,
+                          songs: manager.playlist,
+                        ),
                       ),
                     );
                   },

@@ -364,18 +364,22 @@ class _HomeTabPageState extends State<HomeTabPage> {
 
   Future<void> navigate(Song songs) async {
     final manager = AudioPlayerManager();
-    await manager.updateSongUrl(
-      songs.source,
-      song: songs,
-      playlist: song,
-      isNewSong: true,
+    final success = await manager.playSongs(
+      song,
+      startSong: songs,
     );
     if (!mounted) return;
+    if (!success) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Không thể phát bài hát này.')),
+      );
+      return;
+    }
     Navigator.push(
       context,
       CupertinoPageRoute(
         builder: (context) {
-          return NowPlaying(songs: song, playingSong: songs);
+          return NowPlaying(songs: manager.playlist, playingSong: songs);
         },
       ),
     );
@@ -545,8 +549,30 @@ class _FilteredSongsPage extends StatelessWidget {
                   ),
                   title: Text(s.title),
                   subtitle: Text('${s.artist} • ${s.album ?? ""}'),
-                  onTap: () {
-                    // TODO: play bài hát s hoặc chuyển NowPlaying
+                  onTap: () async {
+                    final manager = AudioPlayerManager();
+                    final success = await manager.playSongs(
+                      songs,
+                      startSong: s,
+                    );
+                    if (!success) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Không thể phát bài hát này.'),
+                        ),
+                      );
+                      return;
+                    }
+                    if (!Navigator.of(context).mounted) return;
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (_) => NowPlaying(
+                          songs: manager.playlist,
+                          playingSong: manager.currentSong ?? s,
+                        ),
+                      ),
+                    );
                   },
                 );
               },
