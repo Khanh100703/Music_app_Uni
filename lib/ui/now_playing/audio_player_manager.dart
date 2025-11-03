@@ -39,6 +39,7 @@ class AudioPlayerManager {
 
   Song? get currentSong => _currentSong;
   List<Song> get playlist => List.unmodifiable(_playlist);
+  bool queueMatches(List<Song> songs) => _hasSamePlaylist(songs);
 
   Future<bool> playSongs(
     List<Song> songs, {

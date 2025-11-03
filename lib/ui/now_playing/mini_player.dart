@@ -120,7 +120,22 @@ class _MiniPlayerContent extends StatelessWidget {
                       },
                     ),
                     const SizedBox(width: 4),
+                    _MiniSkipButton(
+                      manager: manager,
+                      forward: false,
+                    ),
                     _MiniPlayPauseButton(manager: manager),
+                    _MiniSkipButton(
+                      manager: manager,
+                      forward: true,
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      tooltip: 'Đóng mini player',
+                      onPressed: () async {
+                        await manager.stop();
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -163,6 +178,47 @@ class _MiniPlayPauseButton extends StatelessWidget {
             }
           },
           icon: Icon(playing ? Icons.pause_circle_filled : Icons.play_circle_fill),
+        );
+      },
+    );
+  }
+}
+
+class _MiniSkipButton extends StatelessWidget {
+  const _MiniSkipButton({
+    required this.manager,
+    required this.forward,
+  });
+
+  final AudioPlayerManager manager;
+  final bool forward;
+
+  @override
+  Widget build(BuildContext context) {
+    final stream = forward
+        ? manager.player.hasNextStream
+        : manager.player.hasPreviousStream;
+    final fallback = forward
+        ? manager.player.hasNext
+        : manager.player.hasPrevious;
+    return StreamBuilder<bool>(
+      stream: stream,
+      initialData: fallback,
+      builder: (context, snapshot) {
+        final hasTarget = snapshot.data ?? false;
+        return IconButton(
+          icon: Icon(forward ? Icons.skip_next : Icons.skip_previous),
+          tooltip: forward ? 'Bài tiếp theo' : 'Bài trước',
+          onPressed: hasTarget
+              ? () async {
+                  if (forward) {
+                    await manager.player.seekToNext();
+                  } else {
+                    await manager.player.seekToPrevious();
+                  }
+                  await manager.player.play();
+                }
+              : null,
         );
       },
     );

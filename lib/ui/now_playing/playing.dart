@@ -65,10 +65,15 @@ class _NowPlayingPageState extends State<NowPlayingPage>
 
   void _initialisePlayback() {
     Future.microtask(() async {
-      final success = await _audioPlayerManager.playSongs(
-        widget.songs,
-        startSong: _song,
-      );
+      final sameQueue = _audioPlayerManager.queueMatches(widget.songs);
+      final sameSong = _audioPlayerManager.currentSong?.id == _song.id;
+      var success = true;
+      if (!(sameQueue && sameSong)) {
+        success = await _audioPlayerManager.playSongs(
+          widget.songs,
+          startSong: _song,
+        );
+      }
       if (!mounted) return;
       if (!success) {
         ScaffoldMessenger.maybeOf(context)?.showSnackBar(
