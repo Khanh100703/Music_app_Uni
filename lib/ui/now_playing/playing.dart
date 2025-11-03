@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
@@ -6,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
 import '../../data/model/song.dart';
-import 'package:app_music/ui/now_playing/audio_player_manager.dart';
+import '../../services/library_controller.dart';
+import '../library/add_to_playlist_sheet.dart';
+import 'audio_player_manager.dart';
 
 class NowPlaying extends StatelessWidget {
   const NowPlaying({super.key, required this.playingSong, required this.songs});
@@ -42,6 +45,8 @@ class _NowPlayingPageState extends State<NowPlayingPage>
   late Song _song;
   bool _isShuffle = false;
   late LoopMode _loopMode;
+  final LibraryController _libraryController = LibraryController.instance;
+  StreamSubscription<int?>? _indexSubscription;
 
   @override
   void initState() {
@@ -52,19 +57,42 @@ class _NowPlayingPageState extends State<NowPlayingPage>
       duration: const Duration(seconds: 20),
     );
     _audioPlayerManager = AudioPlayerManager();
-    if(_audioPlayerManager.songUrl.compareTo(_song.source)!=0){
-      _audioPlayerManager.updateSongUrl(
-          _song.source,
-      );
-      _audioPlayerManager.prepare(isNewSong: true);
-    } else {
-      _audioPlayerManager.prepare(isNewSong: false);
-    }
+    _audioPlayerManager.setNowPlayingOpen(true);
     _selectedItemIndex = widget.songs.indexOf(widget.playingSong);
-    _loopMode = LoopMode.off;
+    _loopMode = _audioPlayerManager.player.loopMode;
+    _listenToIndexChanges();
+    _initialisePlayback();
   }
 
-
+  void _initialisePlayback() {
+    Future.microtask(() async {
+      final sameQueue = _audioPlayerManager.queueMatches(widget.songs);
+      final sameSong = _audioPlayerManager.currentSong?.id == _song.id;
+      var success = true;
+      if (!(sameQueue && sameSong)) {
+        success = await _audioPlayerManager.playSongs(
+          widget.songs,
+          startSong: _song,
+        );
+      }
+      if (!mounted) return;
+      if (!success) {
+        ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+          const SnackBar(content: Text('Không thể phát bài hát này.')),
+        );
+        Navigator.of(context).maybePop();
+        return;
+      }
+      if (_audioPlayerManager.player.playing) {
+        _playRotationAnimation();
+      }
+      if (mounted) {
+        setState(() {
+          _loopMode = _audioPlayerManager.player.loopMode;
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +103,7 @@ class _NowPlayingPageState extends State<NowPlayingPage>
       navigationBar: CupertinoNavigationBar(
         middle: Text('Now Playing'),
         trailing: IconButton(
-          onPressed: () {},
+          onPressed: _showAddToPlaylist,
           icon: const Icon(Icons.more_horiz),
         ),
       ),
@@ -117,8 +145,8 @@ class _NowPlayingPageState extends State<NowPlayingPage>
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.share_outlined),
+                        onPressed: _showAddToPlaylist,
+                        icon: const Icon(Icons.queue_music),
                         color: Theme.of(context).colorScheme.primary,
                       ),
                       Column(
@@ -144,10 +172,23 @@ class _NowPlayingPageState extends State<NowPlayingPage>
                           ),
                         ],
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.favorite_outline),
-                        color: Theme.of(context).colorScheme.primary,
+                      AnimatedBuilder(
+                        animation: _libraryController,
+                        builder: (context, _) {
+                          final isFavorite =
+                              _libraryController.isFavorite(_song.id);
+                          return IconButton(
+                            onPressed: _toggleFavorite,
+                            icon: Icon(
+                              isFavorite
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                            ),
+                            color: isFavorite
+                                ? Colors.red
+                                : Theme.of(context).colorScheme.primary,
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -180,8 +221,30 @@ class _NowPlayingPageState extends State<NowPlayingPage>
 
   @override
   void dispose() {
+    _audioPlayerManager.setNowPlayingOpen(false);
     _imageAnimationController.dispose();
+    unawaited(_indexSubscription?.cancel());
     super.dispose();
+  }
+
+  void _listenToIndexChanges() {
+    _indexSubscription?.cancel();
+    _indexSubscription =
+        _audioPlayerManager.player.currentIndexStream.listen((index) {
+      if (index == null) return;
+      final queue = _audioPlayerManager.playlist;
+      if (queue.isEmpty || index < 0 || index >= queue.length) return;
+      final nextSong = queue[index];
+      if (mounted) {
+        setState(() {
+          _selectedItemIndex = index;
+          _song = nextSong;
+        });
+        if (_audioPlayerManager.player.playing) {
+          _playRotationAnimation();
+        }
+      }
+    });
   }
 
   Widget _mediaButton() {
@@ -196,14 +259,18 @@ class _NowPlayingPageState extends State<NowPlayingPage>
             size: 24,
           ),
           MediaButtonControl(
-            function: _setPrevSong,
+            function: () {
+              _setPrevSong();
+            },
             icon: Icons.skip_previous,
             color: Colors.deepPurple,
             size: 36,
           ),
           _playButton(),
           MediaButtonControl(
-            function: _setNextSong,
+            function: () {
+              _setNextSong();
+            },
             icon: Icons.skip_next,
             color: Colors.deepPurple,
             size: 36,
@@ -305,65 +372,77 @@ class _NowPlayingPageState extends State<NowPlayingPage>
     setState(() {
       _isShuffle = !_isShuffle;
     });
+    _audioPlayerManager.player.setShuffleModeEnabled(_isShuffle);
+    if (_isShuffle) {
+      _audioPlayerManager.player.shuffle();
+    }
   }
 
   Color? _getShuffleColor() {
     return _isShuffle ? Colors.deepPurple : Colors.grey;
   }
 
-  void _setNextSong() {
+  Future<void> _setNextSong() async {
     if (_isShuffle) {
-      var random = Random();
-      _selectedItemIndex = random.nextInt(widget.songs.length);
-    } else if(_selectedItemIndex < widget.songs.length - 1) {
-      ++_selectedItemIndex;
-    } else if (_loopMode == LoopMode.all && _selectedItemIndex == widget.songs.length - 1){
-      _selectedItemIndex = 0;
+      final queue = _audioPlayerManager.playlist;
+      if (queue.isEmpty) return;
+      final randomIndex = Random().nextInt(queue.length);
+      await _audioPlayerManager.playSongs(queue, startSong: queue[randomIndex]);
+      return;
     }
-    if (_selectedItemIndex >= widget.songs.length) {
-      _selectedItemIndex = _selectedItemIndex % widget.songs.length;
+    if (_audioPlayerManager.player.hasNext) {
+      await _audioPlayerManager.player.seekToNext();
+      await _audioPlayerManager.player.play();
+    } else if (_loopMode == LoopMode.all &&
+        _audioPlayerManager.playlist.isNotEmpty) {
+      await _audioPlayerManager.player.seek(
+        Duration.zero,
+        index: 0,
+      );
+      await _audioPlayerManager.player.play();
     }
-    final nextSong = widget.songs[_selectedItemIndex];
-    _audioPlayerManager.updateSongUrl(
-      nextSong.source,
-      song: nextSong,
-      playlist: widget.songs,
-    );
-    _resetRotationAnimation();
-    setState(() => _song = nextSong);
   }
 
-  void _setPrevSong() {
+  Future<void> _setPrevSong() async {
     if (_isShuffle) {
-      var random = Random();
-      _selectedItemIndex = random.nextInt(widget.songs.length);
-    } else if(_selectedItemIndex > 0) {
-      --_selectedItemIndex;
-    } else if(_loopMode == LoopMode.all && _selectedItemIndex == 0){
-      _selectedItemIndex = widget.songs.length ;
+      final queue = _audioPlayerManager.playlist;
+      if (queue.isEmpty) return;
+      final randomIndex = Random().nextInt(queue.length);
+      await _audioPlayerManager.playSongs(queue, startSong: queue[randomIndex]);
+      return;
     }
-    if (_selectedItemIndex < 0) {
-      _selectedItemIndex = (-1 * _selectedItemIndex) % widget.songs.length;
+    final currentPosition = _audioPlayerManager.player.position;
+    if (currentPosition > const Duration(seconds: 3)) {
+      await _audioPlayerManager.player.seek(Duration.zero);
+      return;
     }
-    final prevSong = widget.songs[_selectedItemIndex];
-    _audioPlayerManager.updateSongUrl(
-      prevSong.source,
-      song: prevSong,
-      playlist: widget.songs,
-    );
-    _resetRotationAnimation();
-    setState(() => _song = prevSong);
+    if (_audioPlayerManager.player.hasPrevious) {
+      await _audioPlayerManager.player.seekToPrevious();
+      await _audioPlayerManager.player.play();
+    } else if (_loopMode == LoopMode.all &&
+        _audioPlayerManager.playlist.isNotEmpty) {
+      final lastIndex = _audioPlayerManager.playlist.length - 1;
+      await _audioPlayerManager.player.seek(
+        Duration.zero,
+        index: lastIndex,
+      );
+      await _audioPlayerManager.player.play();
+    }
   }
 
-  void _setupRepeatOption(){
-    if(_loopMode == LoopMode.off){
-      _loopMode = LoopMode.one;
-    }else if(_loopMode == LoopMode.one){
-      _loopMode = LoopMode.all;
-    }else{
-      _loopMode = LoopMode.off;
-    }
+  void _setupRepeatOption() {
     setState(() {
+      switch (_loopMode) {
+        case LoopMode.off:
+          _loopMode = LoopMode.one;
+          break;
+        case LoopMode.one:
+          _loopMode = LoopMode.all;
+          break;
+        case LoopMode.all:
+          _loopMode = LoopMode.off;
+          break;
+      }
       _audioPlayerManager.player.setLoopMode(_loopMode);
     });
   }
@@ -380,6 +459,29 @@ class _NowPlayingPageState extends State<NowPlayingPage>
     return _loopMode == LoopMode.off
         ? Colors.grey
         : Colors.deepPurple;
+  }
+
+  void _showAddToPlaylist() {
+    showModalBottomSheet<String>(
+      context: context,
+      builder: (_) => AddToPlaylistSheet(song: _song),
+    ).then((value) {
+      if (!mounted || value == null || value.isEmpty) return;
+      _showSnackBar(value);
+    });
+  }
+
+  void _toggleFavorite() {
+    _libraryController.toggleFavorite(_song);
+    final message = _libraryController.isFavorite(_song.id)
+        ? 'Đã thêm vào Yêu thích'
+        : 'Đã xoá khỏi Yêu thích';
+    _showSnackBar(message);
+  }
+
+  void _showSnackBar(String message) {
+    final messenger = ScaffoldMessenger.maybeOf(context);
+    messenger?.showSnackBar(SnackBar(content: Text(message)));
   }
 
 

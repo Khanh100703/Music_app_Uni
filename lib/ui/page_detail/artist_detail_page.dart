@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../../data/model/artist.dart';
 import '../../data/model/song.dart';
 import '../../data/repository/repository.dart';
-import '../now_playing/playing.dart';
+import '../now_playing/audio_player_manager.dart';
+import '../now_playing/now_playing_navigator.dart';
 
 class ArtistDetailPage extends StatefulWidget {
   final Artist artist;
@@ -68,14 +69,32 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
                   ),
                   title: Text(song.title),
                   subtitle: Text(song.album ?? ''),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) =>
-                            NowPlaying(playingSong: song, songs: songs),
-                      ),
+                  onTap: () async {
+                    final manager = AudioPlayerManager();
+                    if (manager.interactionsLocked) {
+                      return;
+                    }
+                    final isCurrentSong = manager.currentSong?.id == song.id;
+                    if (isCurrentSong) {
+                      showNowPlayingPage(
+                        context: context,
+                        manager: manager,
+                        fallbackQueue: songs,
+                        fallbackSong: song,
+                      );
+                      return;
+                    }
+                    final success = await manager.playSongs(
+                      songs,
+                      startSong: song,
                     );
+                    if (!success) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Không thể phát bài hát này.'),
+                        ),
+                      );
+                    }
                   },
                 ),
               ),

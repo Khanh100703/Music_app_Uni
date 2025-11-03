@@ -3,13 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:app_music/ui/home/viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:app_music/services/app_settings_controller.dart';
+import 'package:app_music/ui/library/add_to_playlist_sheet.dart';
+import 'package:app_music/ui/now_playing/mini_player.dart';
 
 import '../../data/model/song.dart';
 import '../../data/model/album.dart';
 import '../../data/model/artist.dart';
 import '../chart/chart.dart';
 import '../library/library.dart';
-import '../now_playing/playing.dart';
+import '../now_playing/now_playing_navigator.dart';
 import '../page_detail/album_detail_page.dart';
 import '../page_detail/artist_detail_page.dart';
 import '../setting/setting.dart';
@@ -21,14 +24,32 @@ class MusicApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Music App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MusicHomePage(),
-      debugShowCheckedModeBanner: false,
+    final settings = AppSettingsController.instance;
+    return AnimatedBuilder(
+      animation: settings,
+      builder: (context, _) {
+        final seed = settings.primaryColor;
+        return MaterialApp(
+          title: 'Music App',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: seed,
+              brightness: Brightness.light,
+            ),
+            useMaterial3: true,
+          ),
+          darkTheme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: seed,
+              brightness: Brightness.dark,
+            ),
+            useMaterial3: true,
+          ),
+          themeMode: settings.themeMode,
+          home: const MusicHomePage(),
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }
@@ -89,6 +110,15 @@ class _MusicHomePageSate extends State<MusicHomePage> {
                 bottom:
                     MediaQuery.of(context).padding.bottom +
                     56, // 56 hợp với CupertinoTabBar
+              ),
+              child: AnimatedBuilder(
+                animation: AppSettingsController.instance,
+                builder: (context, _) {
+                  if (!AppSettingsController.instance.miniPlayerEnabled) {
+                    return const SizedBox.shrink();
+                  }
+                  return const MiniPlayer();
+                },
               ),
             ),
           ),
@@ -319,43 +349,44 @@ class _HomeTabPageState extends State<HomeTabPage> {
     );
   }
 
-  void showBottonSheet() {
-    showModalBottomSheet(
+  void showBottonSheet(Song targetSong) {
+    showModalBottomSheet<String>(
       context: context,
-      builder: (context) {
-        return ClipRRect(
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-          child: Container(
-            color: Colors.white,
-            height: 200,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const Text('Menu'),
-                  ElevatedButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: const Text('Close'),
-                  ),
-                ],
-              ),
-            ),
-          ),
+      builder: (_) => AddToPlaylistSheet(song: targetSong),
+    ).then((value) {
+      if (value != null && value.isNotEmpty && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(value)),
         );
-      },
-    );
+      }
+    });
   }
 
-  void navigate(Song songs) {
-    Navigator.push(
-      context,
-      CupertinoPageRoute(
-        builder: (context) {
-          return NowPlaying(songs: song, playingSong: songs);
-        },
-      ),
+  Future<void> navigate(Song selectedSong) async {
+    final manager = AudioPlayerManager();
+    if (manager.interactionsLocked) {
+      return;
+    }
+    final isCurrentSong = manager.currentSong?.id == selectedSong.id;
+    if (isCurrentSong) {
+      showNowPlayingPage(
+        context: context,
+        manager: manager,
+        fallbackQueue: song,
+        fallbackSong: selectedSong,
+      );
+      return;
+    }
+    final success = await manager.playSongs(
+      song,
+      startSong: selectedSong,
     );
+    if (!mounted) return;
+    if (!success) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Không thể phát bài hát này.')),
+      );
+    }
   }
 }
 
@@ -479,7 +510,7 @@ class _SongItemSection extends StatelessWidget {
       subtitle: Text(song.artist),
       trailing: IconButton(
         icon: const Icon(Icons.more_horiz),
-        onPressed: parent.showBottonSheet,
+        onPressed: () => parent.showBottonSheet(song),
       ),
       onTap: () => parent.navigate(song),
     );
@@ -522,8 +553,32 @@ class _FilteredSongsPage extends StatelessWidget {
                   ),
                   title: Text(s.title),
                   subtitle: Text('${s.artist} • ${s.album ?? ""}'),
-                  onTap: () {
-                    // TODO: play bài hát s hoặc chuyển NowPlaying
+                  onTap: () async {
+                    final manager = AudioPlayerManager();
+                    if (manager.interactionsLocked) {
+                      return;
+                    }
+                    final isCurrentSong = manager.currentSong?.id == s.id;
+                    if (isCurrentSong) {
+                      showNowPlayingPage(
+                        context: context,
+                        manager: manager,
+                        fallbackQueue: songs,
+                        fallbackSong: s,
+                      );
+                      return;
+                    }
+                    final success = await manager.playSongs(
+                      songs,
+                      startSong: s,
+                    );
+                    if (!success) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Không thể phát bài hát này.'),
+                        ),
+                      );
+                    }
                   },
                 );
               },
