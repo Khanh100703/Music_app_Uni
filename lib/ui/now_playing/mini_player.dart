@@ -195,17 +195,23 @@ class _MiniSkipButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final stream = forward
-        ? manager.player.hasNextStream
-        : manager.player.hasPreviousStream;
     final fallback = forward
         ? manager.player.hasNext
         : manager.player.hasPrevious;
-    return StreamBuilder<bool>(
-      stream: stream,
-      initialData: fallback,
+    return StreamBuilder<SequenceState?>(
+      stream: manager.player.sequenceStateStream,
       builder: (context, snapshot) {
-        final hasTarget = snapshot.data ?? false;
+        bool hasTarget = fallback;
+        if (snapshot.hasData) {
+          final state = snapshot.data;
+          final sequence = state?.effectiveSequence;
+          final index = state?.currentIndex;
+          if (sequence != null && index != null) {
+            hasTarget = forward
+                ? index + 1 < sequence.length
+                : index - 1 >= 0 && sequence.isNotEmpty;
+          }
+        }
         return IconButton(
           icon: Icon(forward ? Icons.skip_next : Icons.skip_previous),
           tooltip: forward ? 'Bài tiếp theo' : 'Bài trước',
