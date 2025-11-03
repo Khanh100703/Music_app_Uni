@@ -3,7 +3,7 @@ import '../../data/model/artist.dart';
 import '../../data/model/song.dart';
 import '../../data/repository/repository.dart';
 import '../now_playing/audio_player_manager.dart';
-import '../now_playing/playing.dart';
+import '../now_playing/now_playing_navigator.dart';
 
 class ArtistDetailPage extends StatefulWidget {
   final Artist artist;
@@ -74,7 +74,14 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
                     if (manager.interactionsLocked) {
                       return;
                     }
-                    if (manager.isNowPlayingOpen) {
+                    final isCurrentSong = manager.currentSong?.id == song.id;
+                    if (isCurrentSong) {
+                      showNowPlayingPage(
+                        context: context,
+                        manager: manager,
+                        fallbackQueue: songs,
+                        fallbackSong: song,
+                      );
                       return;
                     }
                     final success = await manager.playSongs(
@@ -87,21 +94,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
                           content: Text('Không thể phát bài hát này.'),
                         ),
                       );
-                      return;
                     }
-                    if (!Navigator.of(context).mounted) return;
-                    manager.setNowPlayingOpen(true);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => NowPlaying(
-                          playingSong: manager.currentSong ?? song,
-                          songs: manager.playlist,
-                        ),
-                      ),
-                    ).whenComplete(() {
-                      manager.setNowPlayingOpen(false);
-                    });
                   },
                 ),
               ),

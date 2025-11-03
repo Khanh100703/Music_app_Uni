@@ -6,7 +6,7 @@ import '../../data/model/song.dart';
 import '../../services/app_settings_controller.dart';
 import '../library/add_to_playlist_sheet.dart';
 import 'audio_player_manager.dart';
-import 'playing.dart';
+import 'now_playing_navigator.dart';
 
 class MiniPlayer extends StatelessWidget {
   const MiniPlayer({super.key});
@@ -59,24 +59,15 @@ class _MiniPlayerContent extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(12),
                       onTap: () {
-                        if (manager.interactionsLocked ||
-                            manager.currentSong == null ||
-                            manager.isNowPlayingOpen) {
+                        if (manager.currentSong == null) {
                           return;
                         }
-                        manager.setNowPlayingOpen(true);
-                        Navigator.of(context)
-                            .push(
-                          CupertinoPageRoute(
-                            builder: (_) => NowPlaying(
-                              playingSong: song,
-                              songs: songs,
-                            ),
-                          ),
-                        )
-                            .whenComplete(() {
-                          manager.setNowPlayingOpen(false);
-                        });
+                        showNowPlayingPage(
+                          context: context,
+                          manager: manager,
+                          fallbackQueue: songs,
+                          fallbackSong: song,
+                        );
                       },
                       child: Row(
                         children: [

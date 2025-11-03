@@ -12,7 +12,7 @@ import '../../data/model/album.dart';
 import '../../data/model/artist.dart';
 import '../chart/chart.dart';
 import '../library/library.dart';
-import '../now_playing/playing.dart';
+import '../now_playing/now_playing_navigator.dart';
 import '../page_detail/album_detail_page.dart';
 import '../page_detail/artist_detail_page.dart';
 import '../setting/setting.dart';
@@ -362,36 +362,31 @@ class _HomeTabPageState extends State<HomeTabPage> {
     });
   }
 
-  Future<void> navigate(Song songs) async {
+  Future<void> navigate(Song selectedSong) async {
     final manager = AudioPlayerManager();
     if (manager.interactionsLocked) {
       return;
     }
-    if (manager.isNowPlayingOpen) {
+    final isCurrentSong = manager.currentSong?.id == selectedSong.id;
+    if (isCurrentSong) {
+      showNowPlayingPage(
+        context: context,
+        manager: manager,
+        fallbackQueue: song,
+        fallbackSong: selectedSong,
+      );
       return;
     }
     final success = await manager.playSongs(
       song,
-      startSong: songs,
+      startSong: selectedSong,
     );
     if (!mounted) return;
     if (!success) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Không thể phát bài hát này.')),
       );
-      return;
     }
-    manager.setNowPlayingOpen(true);
-    Navigator.push(
-      context,
-      CupertinoPageRoute(
-        builder: (context) {
-          return NowPlaying(songs: manager.playlist, playingSong: songs);
-        },
-      ),
-    ).whenComplete(() {
-      manager.setNowPlayingOpen(false);
-    });
   }
 }
 
@@ -563,7 +558,14 @@ class _FilteredSongsPage extends StatelessWidget {
                     if (manager.interactionsLocked) {
                       return;
                     }
-                    if (manager.isNowPlayingOpen) {
+                    final isCurrentSong = manager.currentSong?.id == s.id;
+                    if (isCurrentSong) {
+                      showNowPlayingPage(
+                        context: context,
+                        manager: manager,
+                        fallbackQueue: songs,
+                        fallbackSong: s,
+                      );
                       return;
                     }
                     final success = await manager.playSongs(
@@ -576,21 +578,7 @@ class _FilteredSongsPage extends StatelessWidget {
                           content: Text('Không thể phát bài hát này.'),
                         ),
                       );
-                      return;
                     }
-                    if (!Navigator.of(context).mounted) return;
-                    manager.setNowPlayingOpen(true);
-                    Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (_) => NowPlaying(
-                          songs: manager.playlist,
-                          playingSong: manager.currentSong ?? s,
-                        ),
-                      ),
-                    ).whenComplete(() {
-                      manager.setNowPlayingOpen(false);
-                    });
                   },
                 );
               },
